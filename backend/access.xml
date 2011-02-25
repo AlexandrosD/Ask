@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access component="com_ask">
+	<section name="component">
+		<action name="question.unpublished" title="Display Unpublished questions" description="Display Unpublished questions" />
+		<action name="question.answer" title="Submit Answers" description="" />
+		<action name="question.edit" title="Edit questions" description="" />
+		<action name="question.delete" title="Delete questions" description="" />
+		<action name="question.new" title="Submit question" descirption="" />
+		<action name="question.publish" title="Change publishing state" description="" />
+		<action name="question.own_edit" title="User can edit his own questions" description="" />
+		<action name="question.own_delete" title="User can delete his own questions" desctiption="" />		
+		<action name="question.viewanswers" title="Display answers" description="" />
+		<action name="question.vote" title="Vote answers" description="" />
+		<action name="core.admin" title="Administration / Configurations" description="Administration / Configuration" /> 
+	</section>
+</access>

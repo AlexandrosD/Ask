@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+
+
+
+	<fieldset name="permissions" label="Permissions" description="Permissions">
+		<field
+			name="rules"
+			type="rules"
+			label="Permissions"
+			class="inputbox"
+			validate="rules"
+			filter="rules"
+			component="com_ask"
+			section="component" 
+		/>
+
+	</fieldset>
+
+</config>
