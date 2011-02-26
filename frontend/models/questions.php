@@ -45,6 +45,10 @@ class AskModelQuestions extends JModelList {
 		else { //Only questions...
 			$questions = $rows;
 		}
+		
+		foreach ($questions as $question){
+			$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id ); 
+		}
 
 		$items = $questions;
 		
