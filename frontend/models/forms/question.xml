@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset>
+		<field name="id" type="hidden" />
+		<field
+			name="title"
+			type="text"
+			label="Title"
+			description="Fill in the title"
+			size="40"
+			class="inputbox"
+			default=""
+		/>
+		<field
+			name="text"
+			type="textarea"
+			label="Text"
+			description="Fill in the title"
+			rows="10"
+			cols="40"
+			class="inputbox"
+			default=""
+		/>
+		<field
+			name="name"
+			type="text"
+			label="Your Name"
+			description="Name"
+			size="40"
+			class="inputbox"
+			default=""
+		/>
+		
+		
+		<field
+			name="submitted"
+			type="hidden"
+			format="%Y-%m-%d %H:%M:%S"
+		/>
+		<field name="userid_creator" 
+			type="hidden"
+		/>
+		<field
+			name="modified"
+			type="hidden"
+			format="%Y-%m-%d %H:%M:%S"
+		/>
+		<field
+			name="userid_modifier" 
+			type="hidden"
+		/> 
+		<field
+			name="question"
+			type="hidden"
+			default="1"
+		/>
+		<field
+			name="votes_positive"
+			type="hidden"
+			default="0"
+		/>
+		<field
+			name="votes_negative"
+			type="hidden"
+			default="0"
+		/>
+		<field
+			name="parent"
+			type="hidden"
+			default="0"
+		/>
+		<field
+			name="impressions"
+			type="hidden"
+			default="0"
+		/>
+		
+		<field
+			name="published"
+			type="hidden"
+			default="1"
+		/>
+		
+		<field
+			name="chosen"
+			type="hidden"
+			default="0"
+		/>
+		
+		
+	</fieldset>
+</form>
