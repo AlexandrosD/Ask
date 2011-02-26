@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-        <layout title="Question">
-                <message>Single Question</message>
-        </layout>
+	<layout title="Single Question">
+		<message>Single Question</message>
+	</layout>
+
+	<fields name="request">
+		<fieldset name="request">
+			<!--addfieldpath="/administrator/components/com_content/models/fields">-->
+
+			<field name="id" type="text"
+				label="Question ID (numeric)"
+				required="true"
+				description="Enter the question ID"
+			/>
+			
+		</fieldset>
+	</fields>
+        
 </metadata>

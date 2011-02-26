@@ -28,13 +28,14 @@ class AskModelQuestion extends JModelAdmin {
 		$form = $this->loadForm("com_ask.question" , "question" , array("control"=>"jform" , "loadData"=> $loadData) );
 		
 		if ( empty($form)){
-			$logger->warnin("Form Object is NULL");
+			$logger->warning("Form Object is NULL");
 			return FALSE;
 		}
 		
 		//Fill the form with data
 		if ( $data = $this->loadFormData() ){
 			$logger->info("Filling the form with data..");
+			$logger->info("JSON DATA:" . json_encode($data));
 			
 			$user = JFactory::getUser();
 			
@@ -97,7 +98,7 @@ class AskModelQuestion extends JModelAdmin {
 		$data = JFactory::getApplication()->getUserState("com_ask.edit.question.data" , array() );
 		
 		if (empty($data)){
-			$logger->info("data is empty.. Shall get the item instead..");
+			$logger->info("Data is empty.. Shall get the item instead..");
 			$data = $this->getItem();			
 		}
 		
