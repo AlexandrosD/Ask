@@ -16,11 +16,16 @@ class AskViewQuestion extends JView
             
         	$this->question = $this->get("Item");
 
+        	//Authorizations
         	$user = JFactory::getUser();
+        	$this->assignRef("viewanswers", $user->authorize("question.viewanswers" , "com_ask"));
+        	$this->assignRef("submitanswers", $user->authorize("question.answer" , "com_ask"));
         	
-        	$this->assignRef("viewanswers", $user->authorize("question.viewanswers" , "com_ask") );
-        	
-        	//TODO: retrieve authorizations..
+        	//params
+        	$app = JFactory::getApplication();
+        	$params = $app->getParams();
+        	$this->assignRef("params", $params);
+        	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
        
         	if ( @$this->question ){ //check for questions, suppressing errors..
 	        	//$logger->info ( json_encode($this->question) );

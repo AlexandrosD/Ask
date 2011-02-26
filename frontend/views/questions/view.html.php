@@ -16,9 +16,8 @@ class AskViewQuestions extends JView
             
         	$this->questions = $this->get("Items");
         	$this->pagination = $this->get("Pagination");
-        	$this->state = $this->get("State");
         	
-        	//User's rigths..
+        	//Authorizations
         	$user = JFactory::getUser();
         	$this->assignRef("viewanswers", $user->authorize("question.viewanswers" , "com_ask"));
         	$this->assignRef("submitanswers", $user->authorize("question.answer" , "com_ask"));

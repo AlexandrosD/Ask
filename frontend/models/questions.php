@@ -77,7 +77,7 @@ class AskModelQuestions extends JModelList {
 		
 		if ($where) { $query->where( $where ); }
 		
-		$ordering = $this->getState( "list.ordering" , "published" );
+		$ordering = $this->getState( "list.ordering" , "submitted" );
 		$direction = $this->getState( "list.direction" , "DESC" );
 		
 		$query->order("$ordering $direction");
