@@ -54,6 +54,12 @@ class AskModelQuestion extends JModelItem {
 		$question->answers = $this->getAnswers();
 		$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id );
 		
+		foreach ($question->answers as $a){
+			if (!$a->name){
+				$a->name = JFactory::getUser($a->userid_creator)->name;
+			}
+		}
+		
 		$this->item = $question;
 		
 		//hit!
@@ -76,6 +82,7 @@ class AskModelQuestion extends JModelItem {
 		$query->select("*");
 		$query->from("#__ask");
 		$query->where("parent=" . $this->id );
+		$query->order("submitted DESC");
 		
 		$logger->info("SQL Query for answers: " . $query);
 		

@@ -35,15 +35,16 @@ defined('_JEXEC') or die('Restricted access');
 		<?php foreach ($this->question->answers as $answer):?>
 		<div class="answer" style="padding-bottom:3px; margin-bottom:3px; border-bottom: 1px solid #ccc;">
 			<h3><?php echo $answer->title; ?></h3>
-			<h5>Submitted by <?php echo JFactory::getUser($answer->userid_creator)->name; ?> at <?php echo $answer->submitted; ?></h5>
+			<h5>Submitted by <?php echo $answer->name; ?> at <?php echo $answer->submitted; ?></h5>
 			<p><?php echo $answer->text; ?></p>
 		</div>
 		<?php endforeach;?>
-	<?php endif;?>	
+	<?php endif;?>
 	
 	<?php if ($this->submitanswers):?>
 		<!-- ANSWER FORM -->
 		<a name="#newanswer">&nbsp;</a>
+		<?php echo $this->loadTemplate('form'); ?>
 	<?php endif;?>	
 	
 </div>

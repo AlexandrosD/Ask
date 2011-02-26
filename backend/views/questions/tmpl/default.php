@@ -29,7 +29,7 @@ JHtml::_('behavior.tooltip');
             
         <tfoot>
     	  	<tr>
-        		<td colspan="12"><?php echo $this->pagination->getListFooter(); ?></td>
+        		<td colspan="15"><?php echo $this->pagination->getListFooter(); ?></td>
 			</tr>
 		</tfoot>
            	
@@ -71,10 +71,10 @@ JHtml::_('behavior.tooltip');
 	                	<?php endif;?>
 	                </td>
 	                <td class="center">
-	                	Category (Phase II)
+	                	(Phase II)
 	                </td>
 	                <td class="center">
-	                	Tags (Phase II)
+	                	(Phase II)
 	                </td>
 	                <td class="center">
 	                	<?php echo $item->submitted; ?>
@@ -83,7 +83,7 @@ JHtml::_('behavior.tooltip');
 	                	<?php echo $item->modified; ?>
 	                </td>
 	                <td class="center">
-	                	<?php echo JFactory::getUser($item->userid_creator)->name; ?>
+	                	<?php echo JFactory::getUser($item->userid_creator)->name ? JFactory::getUser($item->userid_creator)->name : $item->name; ?>
 	                </td>
 	                <td class="center">
 	                	<?php 
