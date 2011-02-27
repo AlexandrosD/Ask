@@ -1,6 +1,5 @@
 <?php
 /**
- * @version		$Id: form.php 20228 2011-01-10 00:52:54Z eddieajau $
  * @package		Joomla.Site
  * @subpackage	com_content
  * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
@@ -21,9 +20,9 @@ class AskModelForm extends JModelAdmin
 	/*
 	 * Method to return a JTable instance of the question table
 	 */
-	public function getTable( $type = "Ask" , $prefix = "AskTable" , $config = array() ){
+	public function getTable( $type = "Question" , $prefix = "AskTable" , $config = array() ){
 		global $logger;
-		$logger->info("AskModelQuestion::getTable( $type , $prefix , " . implode( " , " , $config ) ." )");
+		$logger->info("AskModelForm::getTable( $type , $prefix , " . implode( " , " , $config ) ." )");
 		
 		return JTable::getInstance($type, $prefix , $config);
 	}
@@ -33,10 +32,10 @@ class AskModelForm extends JModelAdmin
 	 */
 	public function getForm ( $data = array(), $loadData = TRUE ){
 		global $logger;
-		$logger->info("AskModelQuestion::getForm(" . implode (" , " , $data ) . " , $loadData )");
+		$logger->info("AskModelForm::getForm(" . implode (" , " , $data ) . " , $loadData )");
 
 		$form = $this->loadForm("com_ask.question" , "question" , array("control"=>"jform" , "loadData"=> $loadData) );
-		
+		$logger->info("FORM OBJECT: " . json_encode($form));
 		if ( empty($form)){
 			$logger->warning("Form Object is NULL");
 			return FALSE;
@@ -45,7 +44,6 @@ class AskModelForm extends JModelAdmin
 		//Fill the form with data
 		if ( $data = $this->loadFormData() ){
 			$logger->info("Filling the form with data..");
-			$logger->info("JSON DATA:" . json_encode($data));
 			
 			$user = JFactory::getUser();
 			
@@ -63,28 +61,21 @@ class AskModelForm extends JModelAdmin
 				//New Item.. Fill the form with some defaults values..
 				$logger->info("New Item. Filling default values..");
 				
-				$data->userid_creator = $user->id;
+				if ($user->id){
+					$data->userid_creator = $user->id;
+				} else {
+					$data->userid_creator = 0;
+				}
 				$data->submitted = date("Y-m-d H:i:s");
 				
-				$app = JFactory::getApplication();
-				$parent = $app->getUserState("parentID");
-				$question = $app->getUserState("isQuestion");
-				
-				if (!$parent){
-					$parent=0;
-				}
-				
-				$data->parent = $parent;
-				$data->question = $question;
-				
-				$app->setUserState("isQuestion", 1);
-				$app->setUserState("parentID", 0);
-				
-				$logger->info("Question: $question");
-				$logger->info("Parent: $parent");
+				$data->parent = 0;
+				$data->question = 1;
+				$data->impressions = 0;
+				$data->votes_possitive = 0;
+				$data->votes_negative = 0;
+				$data->chosen = 0;
 				
 			}
-			
 			
 			$logger->info("\n\n" . json_encode($data) . "\n\n");
 			$this->preprocessForm($form, $data);
@@ -95,6 +86,7 @@ class AskModelForm extends JModelAdmin
 		}
 		
 		$logger->info("About to return form object..");		
+		$logger->info("FORM OBJECT: " . json_encode($form));
 		return $form;		
 	}
 	
@@ -103,7 +95,7 @@ class AskModelForm extends JModelAdmin
 	 */
 	protected function loadFormData() {
 		global $logger;
-		$logger->info("AskModelQuestion::loadFormData()");
+		$logger->info("AskModelForm::loadFormData()");
 		
 		$data = JFactory::getApplication()->getUserState("com_ask.edit.question.data" , array() );
 		
@@ -112,7 +104,7 @@ class AskModelForm extends JModelAdmin
 			$data = $this->getItem();			
 		}
 		
-		return $data;	
+		return $data;
 	}
 	
 	/*
@@ -124,7 +116,7 @@ class AskModelForm extends JModelAdmin
 	 */
 	public function getItem(){
 		global $logger;
-		$logger->info ("AskModelQuestion::getItem()");
+		$logger->info ("AskModelForm::getItem()");
 		return parent::getItem();
 	}
 

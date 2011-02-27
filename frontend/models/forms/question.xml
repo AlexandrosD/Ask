@@ -37,14 +37,17 @@
 			type="hidden"
 			format="%Y-%m-%d %H:%M:%S"
 		/>
+		
 		<field name="userid_creator" 
 			type="hidden"
 		/>
+		
 		<field
 			name="modified"
 			type="hidden"
 			format="%Y-%m-%d %H:%M:%S"
 		/>
+		
 		<field
 			name="userid_modifier" 
 			type="hidden"
@@ -55,7 +58,7 @@
 			default="1"
 		/>
 		<field
-			name="votes_positive"
+			name="votes_possitive"
 			type="hidden"
 			default="0"
 		/>

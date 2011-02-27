@@ -11,6 +11,7 @@ jimport('joomla.database.table');
 class AskTableAsk extends JTable
 {
 	protected $params;
+	
         /**
          * Constructor
          *
@@ -28,7 +29,7 @@ class AskTableAsk extends JTable
          * @param       array           named array
          * @return      null|string     null is operation was satisfactory, otherwise returns an error
          * @see JTable:bind
-         * @since 1.5construct
+         * @since 1.5
          */
         public function bind($array, $ignore = '') 
         {

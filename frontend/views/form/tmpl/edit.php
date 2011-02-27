@@ -30,6 +30,7 @@ JHtml::_('behavior.formvalidation');
 	
 	<?php 
 	//HIDDEN FIELDS
+	echo $this->form->getInput("id");
 	echo $this->form->getInput("userid_creator");
 	echo $this->form->getInput("userid_modifier");
 	echo $this->form->getInput("submitted");
@@ -43,15 +44,15 @@ JHtml::_('behavior.formvalidation');
 	echo $this->form->getInput("chosen");	
 	?>
 	
-	<input type="hidden" name="task" value="" />
-	<input type="hidden" name="return" value="<?php echo $this->return_page;?>" />
+	<input type="hidden" name="task" value="form.save" />
+	<input type="hidden" name="return" value="" />
 	<?php echo JHTML::_( 'form.token' ); ?>
 	
 	<div class="formelm-buttons">
-		<button type="button" onclick="Joomla.submitbutton('question.save')">
+		<button type="button" onclick="Joomla.submitbutton('form.save')">
 		<?php echo JText::_('JSAVE') ?>
 		</button>
-		<button type="button" onclick="Joomla.submitbutton('question.cancel')">
+		<button type="button" onclick="Joomla.submitbutton('form.cancel')">
 		<?php echo JText::_('JCANCEL') ?>
 		</button>
 	</div>

@@ -38,11 +38,11 @@ class AskViewQuestions extends JView
         	
             JToolBarHelper::title(JText::_('Questions'));
             
-            AskHelper::canDo("question.edit") ? JToolBarHelper::addNewX('question.add') : NULL ;
-            AskHelper::canDo("question.edit") ? JToolBarHelper::editListX('question.edit') : NULL;
+            AskHelper::canDo("core.create") ? JToolBarHelper::addNewX('question.add') : NULL ;
+            AskHelper::canDo("core.edit") ? JToolBarHelper::editListX('question.edit') : NULL;
             AskHelper::canDo("question.publish") ? JToolBarHelper::publishList("questions.publish") : NULL;
             AskHelper::canDo("question.publish") ? JToolBarHelper::unpublishList("questions.unpublish") : NULL;
             AskHelper::canDo("question.delete") ? JToolBarHelper::deleteListX('Delete?', 'questions.delete') : NULL;
-            AskHelper::canDo("question.edit") ? JToolBarHelper::preferences("com_ask") : NULL;
+            AskHelper::canDo("core.admin") ? JToolBarHelper::preferences("com_ask") : NULL;
         }
 }

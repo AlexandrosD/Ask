@@ -3,9 +3,10 @@
 	<section name="component">
 		<action name="question.unpublished" title="Display Unpublished questions" description="Display Unpublished questions" />
 		<action name="question.answer" title="Submit Answers" description="" />
-		<action name="question.edit" title="Edit questions" description="" />
+		<action name="question.edit" title="Edit / Submit Questions (Administration)" description="" />
+		<action name="core.create" title="Submit Questions (Frontend)" description="" />
+		<action name="core.edit" title="Edit Questions (Frontend)" description="" />
 		<action name="question.delete" title="Delete questions" description="" />
-		<!--<action name="question.new" title="Submit question" description="" />-->
 		<action name="question.publish" title="Change publishing state" description="" />
 		<!--<action name="question.own_edit" title="User can edit his own questions" description="" />-->
 		<!--<action name="question.own_delete" title="User can delete his own questions" desctiption="" />-->		

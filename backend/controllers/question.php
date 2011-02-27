@@ -29,7 +29,7 @@ class AskControllerQuestion extends JControllerForm
 	public function edit() {
 		global $logger;
 		
-		if (!AskHelper::canDo("question.edit")){
+		if (!AskHelper::canDo("core.edit")){
 			$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . (int)(AskHelper::getActiveSubmenu()=="Answers") ,"Not Authorized!" ,  "error");
 			return;
 		}

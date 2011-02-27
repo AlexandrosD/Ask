@@ -65,7 +65,7 @@
 				Answer</option>
 		</field>
 		<field
-			name="votes_positive"
+			name="votes_possitive"
 			type="hidden"
 			default="0"
 		/>

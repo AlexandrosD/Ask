@@ -21,7 +21,7 @@ class AskViewForm extends JView
 		
 		//authorization
 		//TODO: update for edit own questions
-		if (!$user->authorize("question.edit" , "com_ask")){
+		if (!$user->authorize("core.create" , "com_ask")){
 			JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
 			return false;
 		}
@@ -34,10 +34,6 @@ class AskViewForm extends JView
 		$this->assignRef("pageclass_sfx", htmlspecialchars($params->get('pageclass_sfx')));
 		
 		$this->assignRef("user", $user);
-		
-		if (!empty($this->item)) {
-			$this->form->bind($this->item);
-		}
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
