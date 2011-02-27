@@ -1,2 +1,28 @@
-----
-TODO: Add content to README file
+COM_ASK
+A Native Joomla 1.6 component in order to integrate functionality *SIMILAR* to Y!Answers or Quora into a website
+
+Features: 
+* ACL Based Rights
+* Submit Questions from both frontend and backend
+* Submit Answers from both frontend and backend
+* Multilanguage support
+
+Things to come:
+* Categories & Tags integration
+* Social Media Integration
+* Default publishing state options
+* IP logging
+
+The project's files are hosted in github: 
+URL: https://github.com/alexd3499/Ask
+GIT: git://github.com/alexd3499/Ask.git
+
+Issue Tracker at: 
+https://github.com/alexd3499/Ask/issues
+
+
+*********************
+********TODO*********
+*********************
+* Installation Script
+* Language Files
