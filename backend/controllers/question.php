@@ -24,13 +24,13 @@ class AskControllerQuestion extends JControllerForm
 		
 		parent::save();
 		
-		$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . $displayAnswers,"Item Saved!");
+		$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . $displayAnswers,JText::_("MSG_ITEM_SAVED"));
 	}
 	public function edit() {
 		global $logger;
 		
 		if (!AskHelper::canDo("core.edit")){
-			$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . (int)(AskHelper::getActiveSubmenu()=="Answers") ,"Not Authorized!" ,  "error");
+			$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . (int)(AskHelper::getActiveSubmenu()=="Answers") , JText::_("MSG_NOAUTH") ,  "error");
 			return;
 		}
 		

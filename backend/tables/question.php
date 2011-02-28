@@ -95,7 +95,7 @@ class AskTableQuestion extends JTable
         {
                 //return $this->greeting;
                 global $logger;
-                $logger->severe("_getAssetTitle()");
+                $logger->info("_getAssetTitle()");
                 return "_getAssetTitle()";
         }
  

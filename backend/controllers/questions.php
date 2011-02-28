@@ -30,7 +30,7 @@ class AskControllerQuestions extends JControllerAdmin
     	
     	parent::publish();
     	
-    	$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . JRequest::getInt("answers" , 0) ,"State Changed!");
+    	$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . JRequest::getInt("answers" , 0) ,JText::_("MSG_STATE_CHANGED"));
     }
     
     public function delete(){
@@ -39,7 +39,7 @@ class AskControllerQuestions extends JControllerAdmin
     	
     	parent::delete();
     	
-    	$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . JRequest::getInt("answers" , 0) ,"Item Deleted!");
+    	$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . JRequest::getInt("answers" , 0) ,JText::_("MSG_ITEM_DELETED"));
     }
     
 }

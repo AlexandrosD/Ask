@@ -35,7 +35,7 @@ class AskViewQuestion extends JView
 		global $logger;
 		$logger->info("AskViewQuestion::addToolBar");
 		$isNew = ($this->item->id == 0);
-		JToolBarHelper::title($isNew ? "New Question" : "Edit Question");
+		JToolBarHelper::title($isNew ? JText::_("NEW_QUESTION") : JText::_("EDIT_QUESTION"));
 		JToolBarHelper::save("question.save");
 		JToolBarHelper::cancel( "question.cancel" , $isNew ? "JTOOLBAR_CANCEL" : "JTOOLBAR_CLOSE" );
 	}

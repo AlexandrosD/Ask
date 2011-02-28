@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <access component="com_ask">
 	<section name="component">
-		<action name="question.unpublished" title="Display Unpublished questions" description="Display Unpublished questions" />
-		<action name="question.answer" title="Submit Answers" description="" />
-		<action name="question.edit" title="Edit / Submit Questions (Administration)" description="" />
-		<action name="core.create" title="Submit Questions (Frontend)" description="" />
-		<action name="core.edit" title="Edit Questions (Frontend)" description="" />
-		<action name="question.delete" title="Delete questions" description="" />
-		<action name="question.publish" title="Change publishing state" description="" />
-		<!--<action name="question.own_edit" title="User can edit his own questions" description="" />-->
-		<!--<action name="question.own_delete" title="User can delete his own questions" desctiption="" />-->		
-		<action name="question.viewanswers" title="Display answers" description="" />
-		<action name="question.vote" title="Vote answers" description="" />
-		<action name="core.admin" title="Administration / Configurations" description="Administration / Configuration" /> 
+		<action name="question.unpublished" title="QUESTION_UNPUBLISHED" description="" />
+		<action name="question.answer" title="QUESTION_ANSWER" description="" />
+		<action name="question.edit" title="QUESTION_EDIT" description="" />
+		<action name="core.create" title="CORE_CREATE" description="" />
+		<action name="core.edit" title="CORE_EDIT" description="" />
+		<action name="question.delete" title="QUESTION_DELETE" description="" />
+		<action name="question.publish" title="QUESTION_PUBLISH" description="" />
+		<!--<action name="question.own_edit" title="QUESTION_OWN_EDIT" description="" />-->
+		<!--<action name="question.own_delete" title="QUESTION_OWN_DELETE" desctiption="" />-->		
+		<action name="question.viewanswers" title="QUESTION_VIEWANSWERS" description="" />
+		<!--<action name="question.vote" title="QUESTION_VOTE" description="" />-->
+		<action name="core.admin" title="CORE_ADMIN" description="" /> 
 	</section>
 </access>
