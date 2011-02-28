@@ -12,18 +12,18 @@ JHtml::_('behavior.tooltip');
 			<tr>
 		        <th width="10">ID</th>
         		<th width="10">&nbsp;</th>                     
-        		<th>Title</th>
-        		<th>Published</th>
-        		<th>Type</th>
-        		<th>Parent</th>
-        		<th>Answer</th>
-        		<th>Category</th>
-        		<th>Tags</th>
-        		<th>Submitted</th>
-        		<th>Modified</th>
-        		<th>Submitted By</th>
-        		<th>Modified By</th>
-        		<th>Impressions</th>
+        		<th><?php echo JText::_("TBL_TITLE")?></th>
+        		<th><?php echo JText::_("TBL_PUBLISHED")?></th>
+        		<th><?php echo JText::_("TBL_TYPE")?></th>
+        		<th><?php echo JText::_("TBL_PARENT")?></th>
+        		<th><?php echo JText::_("TBL_ANSWER")?></th>
+        		<th><?php echo JText::_("TBL_CATEGORY")?></th>
+        		<th><?php echo JText::_("TBL_TAGS")?></th>
+        		<th><?php echo JText::_("TBL_SUBMITTED")?></th>
+        		<th><?php echo JText::_("TBL_MODIFIED")?></th>
+        		<th><?php echo JText::_("TBL_SUBMITTED_BY")?></th>
+        		<th><?php echo JText::_("TBL_MODIFIED_BY")?></th>
+        		<th><?php echo JText::_("TBL_IMPRESSIONS")?></th>
 			</tr>
 		</thead>
             
@@ -49,7 +49,7 @@ JHtml::_('behavior.tooltip');
 	                	<?php echo JHtml::_('jgrid.published', $item->published, $i , "questions."); ?>
 	                </td>
 	                <td class="center">
-	                	<?php if ($item->question){echo "Question"; } else { echo "Answer"; } ?>
+	                	<?php if ($item->question){echo JText::_("QUESTION"); } else { echo JText::_("ANSWER"); } ?>
 	                </td>
 	                <td>
 	                	<?php 
