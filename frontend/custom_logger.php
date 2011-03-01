@@ -3,7 +3,7 @@
 //If _NOLOG is defined, no logging will be performed
 //In order the logger to work correctly, either the access rights should correctly set
 //(or just the file to exist??)
-
+define("_NOLOG", 1);
 class CustomLogger {
 	
 	//Variables
