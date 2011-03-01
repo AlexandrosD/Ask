@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
 	<view
-		title="Question">
-		<message>Submit a question</message>
+		title="MENU_DISPLAY_QUESTION">
+		<message>MENU_DISPLAY_QUESTION</message>
 	</view>
 </metadata>

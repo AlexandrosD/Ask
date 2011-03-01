@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="Single Question">
-		<message>Single Question</message>
+	<layout title="MENU_DISPLAY_QUESTION">
+		<message>MENU_DISPLAY_QUESTION</message>
 	</layout>
 
 	<fields name="request">
@@ -9,9 +9,9 @@
 			<!--addfieldpath="/administrator/components/com_content/models/fields">-->
 
 			<field name="id" type="text"
-				label="Question ID (numeric)"
+				label="MENU_PARAM_QID"
 				required="true"
-				description="Enter the question ID"
+				description="MENU_PARAM_QID_DESC"
 			/>
 			
 		</fieldset>

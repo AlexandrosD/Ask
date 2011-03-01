@@ -4,9 +4,7 @@ defined('_JEXEC') or die('Restricted access');
  
 // import Joomla view library
 jimport('joomla.application.component.view');
-/**
- * HTML View class for the HelloWorld Component
- */
+
 class AskViewQuestion extends JView
 {
         // Overwriting JView display method
@@ -33,7 +31,7 @@ class AskViewQuestion extends JView
         	}
         	else{
         		$logger->error("No Results..");
-        		JError::raiseNotice(404, "Nothing found");
+        		JError::raiseNotice(404, JText::_("ERROR_404"));
         	}
         }
 }
