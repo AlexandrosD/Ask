@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="1.6.0" method="upgrade">
  
-        <name>COM_HELLOWORLD</name>
+        <name>COM_ASK</name>
         <creationDate>March 2011</creationDate>
         <author>Alexandros D</author>
         <authorEmail>alexd3499@gmail.com</authorEmail>
@@ -79,8 +79,8 @@
                 </files>
  
                 <languages folder="admin">
-                        <language tag="en-GB">language/en-GB/en-GB.com_helloworld.ini</language>
-                        <!--<language tag="en-GB">language/en-GB/en-GB.com_helloworld.sys.ini</language>-->
+                        <language tag="en-GB">language/en-GB/en-GB.com_ask.ini</language>
+                        <!--<language tag="en-GB">language/en-GB/en-GB.com_ask.sys.ini</language>-->
                 </languages>
         </administration>
  
