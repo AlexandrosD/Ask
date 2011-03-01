@@ -5,8 +5,8 @@
 		<field
 			name="title"
 			type="text"
-			label="Title"
-			description="Fill in the title"
+			label="FRM_Q_TITLE"
+			description="FRM_Q_TITLE"
 			size="40"
 			class="inputbox"
 			default=""
@@ -14,8 +14,8 @@
 		<field
 			name="text"
 			type="textarea"
-			label="Text"
-			description="Fill in the title"
+			label="FRM_Q_TEXT"
+			description="FRM_Q_TEXT"
 			rows="10"
 			cols="40"
 			class="inputbox"
@@ -24,8 +24,8 @@
 		<field
 			name="name"
 			type="text"
-			label="Your Name"
-			description="Name"
+			label="FRM_Q_NAME"
+			description="FRM_Q_NAME"
 			size="40"
 			class="inputbox"
 			default=""

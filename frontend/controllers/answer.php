@@ -43,22 +43,22 @@ class AskControllerAnswer extends JController
 		
 		if ((!JFactory::getUser()->id) && (!$name)){
 			$valid = FALSE;
-			$msg.="<br />Please enter your name";
+			$msg.="<br />" . JText::_("ERR_ANSWER_NONAME");
 		}
 		
 		if (!$text) {
 			$valid = FALSE;
-			$msg.="<br />Text cannot be empty";
+			$msg.="<br />" . JText::_("ERR_ANSWER_NOTEXT");
 		}
 		
 		if (!$title){
 			$valid = FALSE;
-			$msg.= "<br />Title cannot be empty";
+			$msg.="<br />" . JText::_("ERR_ANSWER_NOTITLE");
 		}
 		
 		if(!$valid){
 			$return = JRoute::_("index.php?option=com_ask&view=question&name=$name&title=$title&text=$text&id=" . $parent);		
-			parent::setRedirect($return , "Please fill all the required fiels" . $msg , "ERROR");
+			parent::setRedirect($return , JText::_("ERR_FILL_ALL_REQ_FIELDS") . $msg , "ERROR");
 			return;
 		}
 		
@@ -73,10 +73,10 @@ class AskControllerAnswer extends JController
 		$db->setQuery($q);
 		
 		if ($db->query()){
-			$message = "Answer Saved!";
+			$message = JText::_("MSG_ANSW_SAVED");
 			$type = NULL;
 		} else {
-			$message = "Cannot Save Answer";
+			$message = JText::_("MSG_ANSW_NOSAVE");
 			$type="ERROR";
 		}
 		
