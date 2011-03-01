@@ -80,7 +80,7 @@
  
                 <languages folder="admin">
                         <language tag="en-GB">language/en-GB/en-GB.com_ask.ini</language>
-                        <!--<language tag="en-GB">language/en-GB/en-GB.com_ask.sys.ini</language>-->
+                        <language tag="en-GB">language/en-GB/en-GB.com_ask.sys.ini</language>
                 </languages>
         </administration>
  
