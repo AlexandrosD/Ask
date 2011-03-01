@@ -61,6 +61,6 @@ class com_askInstallerScript
         {
                 // $parent is the class calling this method
                 // $type is the type of change (install, update or discover_install)
-                echo '<p>COM_ASK Postflight' . $type . ' Script') . '</p>';
+                echo '<p>COM_ASK Postflight' . $type . ' Script</p>';
         }
 }
