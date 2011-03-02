@@ -1,15 +1,17 @@
 #!/bin/bash
-PACKAGEDIR="Packages"
-mkdir $PACKAGEDIR
-mkdir $PACKAGEDIR/site/
-mkdir $PACKAGEDIR/admin/
-cp -r frontend/* $PACKAGEDIR/site
-cp -r backend/* $PACKAGEDIR/admin
-cp ask.xml $PACKAGEDIR/
-cp script.php $PACKAGEDIR/
-cp README $PACKAGEDIR/
-cd $PACKAGEDIR/
+TMPDIR="TMP"
+PACKAGEDIR=".."
+rm $PACKAGEDIR/ask.zip
+mkdir $TMPDIR
+mkdir $TMPDIR/site/
+mkdir $TMPDIR/admin/
+cp -r frontend/* $TMPDIR/site
+cp -r backend/* $TMPDIR/admin
+cp ask.xml $TMPDIR/
+cp script.php $TMPDIR/
+cp README $TMPDIR/
+cd $TMPDIR/
 zip -r ask.zip *
-mv ask.zip ../../
 cd ../
-rm -r $PACKAGEDIR/
+mv $TMPDIR/ask.zip $PACKAGEDIR
+rm -r $TMPDIR/

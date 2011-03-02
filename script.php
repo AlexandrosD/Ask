@@ -26,7 +26,7 @@ class com_askInstallerScript
         function uninstall($parent) 
         {
                 // $parent is the class calling this method
-                echo '<p>Uninstall COM_ASK</p>';
+                echo '<p>Uninstall Ask (Questions)</p>';
         }
  
         /**
@@ -37,7 +37,7 @@ class com_askInstallerScript
         function update($parent) 
         {
                 // $parent is the class calling this method
-                echo '<p>Update COM_ASK</p>';
+                echo '<p>Update Ask (Questions)</p>';
         }
  
         /**
@@ -49,7 +49,7 @@ class com_askInstallerScript
         {
                 // $parent is the class calling this method
                 // $type is the type of change (install, update or discover_install)
-                echo '<p>COM_ASK Preflight ' . $type . ' Script</p>';
+                echo '<p>Ask (Questions) Preflight ' . $type . ' Script</p>';
         }
  
         /**
@@ -61,6 +61,6 @@ class com_askInstallerScript
         {
                 // $parent is the class calling this method
                 // $type is the type of change (install, update or discover_install)
-                echo '<p>COM_ASK Postflight' . $type . ' Script</p>';
+                echo '<p>Ask (Questions) Postflight' . $type . ' Script</p>';
         }
 }

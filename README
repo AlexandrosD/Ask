@@ -10,8 +10,10 @@ Features:
 Things to come:
 * Categories & Tags integration
 * Social Media Integration
-* Default publishing state options
+* Default publishing state options & misc configurations
 * IP logging
+* CAPTCHA Integration
+* GRAVATAR Integration
 * Vote answers
 * Choose best answer
 
@@ -22,9 +24,4 @@ GIT: git://github.com/alexd3499/Ask.git
 Issue Tracker at: 
 https://github.com/alexd3499/Ask/issues
 
-
-*********************
-********TODO*********
-*********************
-* Installation Script
-* Language Files
+Note that first priority after installing is to configure ACL according to your needs. By default, unregistered users are neither allowed to display aswers to questions, nor to submit them.
