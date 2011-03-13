@@ -1,4 +1,15 @@
 <?php
+/*------------------------------------------------------------------------
+# com_ask - Ask (Questions)
+# ------------------------------------------------------------------------
+# @author    Alexandros D
+# @copyright Copyright (C) 2011 Alexandros D. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# @Website: http://alexd.mplofa.com
+-------------------------------------------------------------------------*/
+
+// No direct access to this file
+defined('_JEXEC') or die('Restricted access');
 
 //If _NOLOG is defined, no logging will be performed
 //In order the logger to work correctly, either the access rights should correctly set

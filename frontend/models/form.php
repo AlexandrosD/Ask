@@ -1,13 +1,15 @@
 <?php
-/**
- * @package		Joomla.Site
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
+/*------------------------------------------------------------------------
+# com_ask - Ask (Questions)
+# ------------------------------------------------------------------------
+# @author    Alexandros D
+# @copyright Copyright (C) 2011 Alexandros D. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# @Website: http://alexd.mplofa.com
+-------------------------------------------------------------------------*/
 
-// No direct access
-defined('_JEXEC') or die;
+// No direct access to this file
+defined('_JEXEC') or die('Restricted access');
 
 
 jimport('joomla.application.component.modeladmin');
