@@ -6,12 +6,12 @@ Features:
 * Submit Questions from both frontend and backend
 * Submit Answers from both frontend and backend
 * Multilanguage support
+* IP logging
 
 Things to come:
 * Categories & Tags integration
 * Social Media Integration
 * Default publishing state options & misc configurations
-* IP logging
 * CAPTCHA Integration
 * GRAVATAR Integration
 * Vote answers
