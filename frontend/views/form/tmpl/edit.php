@@ -51,9 +51,9 @@ JHtml::_('behavior.formvalidation');
 	echo $this->form->getInput("votes_negative");
 	echo $this->form->getInput("impressions");
 	echo $this->form->getInput("published");
-	echo $this->form->getInput("chosen");	
+	echo $this->form->getInput("chosen");
 	?>
-	
+	<input id="jform_ip" type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" name="jform[ip]" />
 	<input type="hidden" name="task" value="form.save" />
 	<input type="hidden" name="return" value="" />
 	<?php echo JHTML::_( 'form.token' ); ?>

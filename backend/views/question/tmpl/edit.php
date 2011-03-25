@@ -20,6 +20,7 @@ JHtml::_('behavior.tooltip');
 <?php foreach($this->form->getFieldset() as $field): ?>
                         <li><?php echo $field->label;echo $field->input;?></li>
 <?php endforeach; ?>
+						<li><input id="jform_ip" type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" name="jform[ip]" /></li>
                 </ul>
         </fieldset>
         <div>

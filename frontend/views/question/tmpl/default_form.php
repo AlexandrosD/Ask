@@ -43,6 +43,7 @@ JHtml::_('behavior.formvalidation');
 		
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="question_id" value="<?php echo $this->question->id; ?>" />
+		<input id="ip" type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" name="ip" />
 		<?php echo JHTML::_( 'form.token' ); ?>
 		
 	</fieldset>

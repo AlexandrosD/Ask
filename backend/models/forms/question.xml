@@ -105,5 +105,11 @@
 			name="chosen"
 			type="hidden"
 		/>
+		
+		<field
+			name="ip"
+			type="hidden"
+		/>
+		
 	</fieldset>
 </form>

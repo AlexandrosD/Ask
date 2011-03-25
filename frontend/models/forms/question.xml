@@ -90,6 +90,10 @@
 			default="0"
 		/>
 		
+		<field
+			name="ip"
+			type="hidden"
+		/>
 		
 	</fieldset>
 </form>

@@ -33,12 +33,13 @@ JHtml::_('behavior.tooltip');
         		<th><?php echo JText::_("TBL_SUBMITTED_BY")?></th>
         		<th><?php echo JText::_("TBL_MODIFIED_BY")?></th>
         		<th><?php echo JText::_("TBL_IMPRESSIONS")?></th>
+        		<th>IP</th>
 			</tr>
 		</thead>
             
         <tfoot>
     	  	<tr>
-        		<td colspan="15"><?php echo $this->pagination->getListFooter(); ?></td>
+        		<td colspan="16"><?php echo $this->pagination->getListFooter(); ?></td>
 			</tr>
 		</tfoot>
            	
@@ -103,6 +104,9 @@ JHtml::_('behavior.tooltip');
 	                </td>
 	                <td class="center">
 	                	<?php echo $item->impressions; ?>
+	                </td>
+	                <td class="center">
+	                	<?php echo $item->ip; ?>
 	                </td>
 	        </tr>
 			<?php endforeach; ?>

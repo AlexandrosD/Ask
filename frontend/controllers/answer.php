@@ -43,6 +43,9 @@ class AskControllerAnswer extends JController
 		$submitted = date("Y-m-d H:i");
 		$userid_creator = JFactory::getUser()->id;
 		
+		$ip = JRequest::getString("ip");
+		$ip = mysql_real_escape_string($ip);
+		
 		//TODO: Determine State
 		$published = 1;
 		
@@ -74,8 +77,8 @@ class AskControllerAnswer extends JController
 		//Build the insert query
 		$db = JFactory::getDBO();
 		$q = "INSERT INTO #__ask";
-		$q.= "(`id` ,`title` ,`text` ,`submitted` ,`modified` ,`userid_creator` ,`userid_modifier` ,`question` ,`votes_possitive` ,`votes_negative` ,`parent` ,`impressions` ,`published` ,`chosen` , `name`)";
-		$q.= "VALUES (NULL, '$title' , '$text' , '$submitted' , NULL , '$userid_creator' , NULL , '0' , '0' , '0' , '$parent' , '0' , '$published' , '0' , '$name' )";
+		$q.= "(`id` ,`title` ,`text` ,`submitted` ,`modified` ,`userid_creator` ,`userid_modifier` ,`question` ,`votes_possitive` ,`votes_negative` ,`parent` ,`impressions` ,`published` ,`chosen` , `name`, `ip`)";
+		$q.= "VALUES (NULL, '$title' , '$text' , '$submitted' , NULL , '$userid_creator' , NULL , '0' , '0' , '0' , '$parent' , '0' , '$published' , '0' , '$name' , '$ip')";
 		
 		$logger->info($q);
 		
