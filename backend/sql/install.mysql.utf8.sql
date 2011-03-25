@@ -16,6 +16,7 @@ CREATE TABLE `#__ask` (
   `published` tinyint(3) NOT NULL,
   `chosen` int(11) NOT NULL,
   `name` text,
+  `ip` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
@@ -34,10 +35,11 @@ INSERT INTO `#__ask` (
 `impressions` ,
 `published` ,
 `chosen` ,
-`name`
+`name`,
+`ip`
 )
 VALUES (
-'1', 'Sample Question', 'Sample Question Text', '2011-03-01 20:56:09', NULL , '0', NULL , '1', '0', '0', '0', '0', '1', '0', 'Alexandros'
+'1', 'Sample Question', 'Sample Question Text', '2011-03-01 20:56:09', NULL , '0', NULL , '1', '0', '0', '0', '0', '1', '0', 'Alexandros', '127.0.0.1'
 ), (
-'2', 'Sample Answer', 'Sample Answer Text', '2011-03-01 20:56:55', NULL , '0', NULL , '0', '0', '0', '1', '0', '1', '0', 'Alexandros'
+'2', 'Sample Answer', 'Sample Answer Text', '2011-03-01 20:56:55', NULL , '0', NULL , '0', '0', '0', '1', '0', '1', '0', 'Alexandros', '127.0.0.1'
 );
