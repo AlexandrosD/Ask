@@ -10,6 +10,10 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
+//include helper functions
+require_once ("administrator/components/com_ask/helpers/ask.php");
+
 ?>
 
 
@@ -29,14 +33,19 @@ defined('_JEXEC') or die('Restricted access');
 	
 	<p><?php echo $this->question->text; ?></p>
 	
+	<div class="fb_buttons"> 
+		<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+		&nbsp;
+		<iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo urlencode(AskHelper::getCurrentPageURL()); ?>&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;font&amp;colorscheme=light&amp;height=30" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:30px;" allowTransparency="true"></iframe>
+	</div>
+	
 	<div class="question_options">	
-	
 
-	<a href="<?php echo $this->question->link; ?>#answers"><?php echo count($this->question->answers);?></a>  <?php echo JText::_("ANSWERS")?> 
+		<a href="<?php echo $this->question->link; ?>#answers"><?php echo count($this->question->answers);?></a>  <?php echo JText::_("ANSWERS")?>. 
 	
-	<?php if ($this->submitanswers):?>
-		<a href="<?php echo $this->question->link; ?>#newanswer"><?php echo JText::_("ANSWER")?></a>  <?php echo JText::_("THIS_QUESTION")?> 
-	<?php endif;?>	
+		<?php if ($this->submitanswers):?>
+		<a href="<?php echo $this->question->link; ?>#newanswer"><?php echo JText::_("ANSWER")?></a>  <?php echo JText::_("THIS_QUESTION")?>! 
+		<?php endif;?>
 	
 	</div>
 	

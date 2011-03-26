@@ -8,10 +8,11 @@ Features:
 * Multilanguage support
 * IP logging
 * GRAVATAR Integration
+* FACEBOOK Integration ( Like & Share buttons)
 
 Things to come:
 * Categories & Tags integration
-* Social Media Integration
+* Social Media Integration (Twitter & bookmarking sites) :: This will be configurable
 * Default publishing state options & misc configurations
 * CAPTCHA Integration
 * Vote answers
