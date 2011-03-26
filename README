@@ -26,7 +26,7 @@ https://github.com/alexd3499/Ask/issues
 
 Note that first priority after installing is to configure ACL according to your needs. By default, unregistered users are neither allowed to display aswers to questions, nor to submit them.
 
-Next version is coming.. :)
+Next version (v0.6.x) is coming.. :)
 
 25/3/2011 - Added IP Logging Functionality
 26/3/2011 - Added GRAVATAR support
