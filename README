@@ -7,13 +7,13 @@ Features:
 * Submit Answers from both frontend and backend
 * Multilanguage support
 * IP logging
+* GRAVATAR Integration
 
 Things to come:
 * Categories & Tags integration
 * Social Media Integration
 * Default publishing state options & misc configurations
 * CAPTCHA Integration
-* GRAVATAR Integration
 * Vote answers
 * Choose best answer
 
@@ -29,3 +29,4 @@ Note that first priority after installing is to configure ACL according to your 
 Next version is coming.. :)
 
 25/3/2011 - Added IP Logging Functionality
+26/3/2011 - Added GRAVATAR support
