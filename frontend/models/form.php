@@ -77,6 +77,9 @@ class AskModelForm extends JModelAdmin
 				$data->votes_negative = 0;
 				$data->chosen = 0;
 				
+				//get email from user object
+				$data->email = $user->email;
+				
 			}
 			
 			$logger->info("\n\n" . json_encode($data) . "\n\n");

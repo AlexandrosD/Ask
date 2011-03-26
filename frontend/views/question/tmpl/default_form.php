@@ -28,6 +28,10 @@ JHtml::_('behavior.formvalidation');
 		<br />
 		<?php endif;?>
 		
+		<label for="email"><?php echo JText::_("FRM_Q_EMAIL");?></label>
+		<input id="email" name="email" type="text" maxlength="40" value="<?php echo JRequest::getString("email" , JFactory::getUser()->email ); ?>" style="display:block;" />
+		<br />
+		
 		<label for="title"><?php echo JText::_("FRM_Q_TITLE");?></label>
 		<input id="title" name="title" type="text" maxlength="30" value="<?php echo JRequest::getString("title")?>" style="display:block;" />
 		<br />

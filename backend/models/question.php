@@ -66,6 +66,9 @@ class AskModelQuestion extends JModelAdmin {
 				$data->userid_creator = $user->id;
 				$data->submitted = date("Y-m-d H:i:s");
 				
+				//get email from user object
+				$data->email = $user->email;
+				
 				$app = JFactory::getApplication();
 				$parent = $app->getUserState("parentID");
 				$question = $app->getUserState("isQuestion");

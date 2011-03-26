@@ -111,5 +111,13 @@
 			type="hidden"
 		/>
 		
+		<field
+			name="email"
+			type="text"
+			label="email"
+			class="inputbox"
+			size="40"
+		/>
+		
 	</fieldset>
 </form>

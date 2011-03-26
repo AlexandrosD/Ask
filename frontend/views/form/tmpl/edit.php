@@ -27,6 +27,11 @@ JHtml::_('behavior.formvalidation');
 		<?php echo $this->form->getInput("name");?>
 	</div>
 	<?php endif; ?>
+	
+	<div class="formelm">
+		<?php echo $this->form->getLabel("email");?>
+		<?php echo $this->form->getInput("email");?>
+	</div>
 		
 	<div class="formelm">
 		<?php echo $this->form->getLabel("title");?>

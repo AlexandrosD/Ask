@@ -95,5 +95,13 @@
 			type="hidden"
 		/>
 		
+		<field
+			name="email"
+			type="text"
+			label="FRM_Q_EMAIL"
+			size="40"
+			class="inputbox"
+		/>
+		
 	</fieldset>
 </form>

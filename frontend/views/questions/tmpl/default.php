@@ -22,6 +22,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	<?php foreach($this->questions as $question): ?>
 		<div class="question" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid #ccc;">
+			<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($question->email))); ?>?s=34" style="float:right; border:2px solid #333;" />			
 			<h2 class="question_title"><a href="<?php echo $question->link; ?>"><?php echo $question->title; ?></a></h2>
 			<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo JFactory::getUser($question->userid_creator)->name; ?> <?php echo JText::_("AT")?> <?php echo $question->submitted; ?></h4>
 			<p><?php echo $question->text; ?></p>
