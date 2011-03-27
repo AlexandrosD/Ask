@@ -3,4 +3,18 @@
         <layout title="MENU_QUESTIONS">
                 <message>MENU_QUESTIONS</message>
         </layout>
+        <fields name="request">
+			<fieldset name="request">
+			<!--addfieldpath="/administrator/components/com_content/models/fields">-->
+
+				<field name="catid" 
+					type="category"
+					extension="com_ask"
+					label="CATEGORY"
+					class="inputbox"
+				>
+			 		<option value="0">JOPTION_SELECT_CATEGORY</option>
+				</field>
+			</fieldset>
+		</fields>
 </metadata>

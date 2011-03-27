@@ -38,15 +38,16 @@ class AskModelQuestion extends JModelItem {
 		$db = JFactory::getDbo();
 		
 		$query = $db->getQuery(TRUE);
-		$query->select("*");
-		$query->from("#__ask");
+		$query->select("a.*, c.title AS CategoryName");
+		$query->from("#__ask AS a");
+		$query->leftJoin("#__categories AS c ON c.id=a.catid");
 		
 		$where = "";
 		if (!$this->getState("filter.unpublished")){
-			$where = "id=$id";
+			$where = "a.id=$id";
 		}
 		else {
-			$where = "id=$id AND published=1";
+			$where = "a.id=$id AND a.published=1";
 		}
 		$query->where($where);
 		
@@ -231,7 +232,7 @@ class AskModelQuestion extends JModelItem {
 		}
 	}
 	
-	private function store(){
+	private function store(){ //TODO: What's this ??
 		global $logger;
 		
 	}

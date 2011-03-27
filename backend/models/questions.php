@@ -53,8 +53,9 @@ class AskModelQuestions extends JModelList
                 // Create a new query object.         
                 $db = JFactory::getDBO();
                 $query = $db->getQuery(true);
-                $query->select('*');
-                $query->from('#__ask');
+                $query->select('a.*, c.title AS CategoryName');
+                $query->from('#__ask AS a');
+                $query->leftJoin('#__categories AS c ON a.catid=c.id');
                 $query->order($this->getState("list.ordering") . " " . $this->getState("list.direction"));
                 
                 $answers = JRequest::getInt("answers");

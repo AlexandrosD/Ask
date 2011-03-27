@@ -75,13 +75,13 @@ JHtml::_('behavior.tooltip');
 	                </td>
 	                <td>
 	                	<?php if ($item->question):?>
-	                		<a href="<?php echo JRoute::_('index.php?option=com_ask&task=question.edit&question=0&parent=' . $item->id)?>">Answer</a>
-	                	<?php else:?>
+	                		<a href="<?php echo JRoute::_('index.php?option=com_ask&task=question.edit&question=0&parent=' . $item->id . '&catid=' . $item->catid ); ?>">Answer</a>
+	                	<?php else: ?>
 	                		N/A
-	                	<?php endif;?>
+	                	<?php endif; ?>
 	                </td>
 	                <td class="center">
-	                	(Phase II)
+	                	<?php echo ($item->CategoryName); ?>
 	                </td>
 	                <td class="center">
 	                	(Phase II)

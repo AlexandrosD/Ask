@@ -16,6 +16,8 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.calendar');
 JHtml::_('behavior.formvalidation');
 */
+
+require_once ("administrator/components/com_ask/helpers/ask.php");
 ?>
 <h2><?php echo JText::_("ANSWER");?> <?php echo JText::_("THIS_QUESTION");?>..</h2>
 <form action="<?php echo JRoute::_("index.php?option=com_ask"); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
@@ -48,6 +50,8 @@ JHtml::_('behavior.formvalidation');
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="question_id" value="<?php echo $this->question->id; ?>" />
 		<input id="ip" type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" name="ip" />
+		<input id="catid" type="hidden" value="<?php echo $this->question->catid; ?>" name="catid" />
+		<input name="returnTo" type="hidden" value="<?php echo AskHelper::getCurrentPageURL(); ?>" name="returnTo" />
 		<?php echo JHTML::_( 'form.token' ); ?>
 		
 	</fieldset>

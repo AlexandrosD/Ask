@@ -18,6 +18,7 @@ CREATE TABLE `#__ask` (
   `name` text,
   `ip` text,
   `email` text,
+  `catid` int(11) NOT NULL DEFAULT '0'
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
@@ -37,11 +38,12 @@ INSERT INTO `#__ask` (
 `published` ,
 `chosen` ,
 `name`,
-`ip`
-`email`
+`ip`,
+`email`,
+`catid`
 )
 VALUES (
-'1', 'Sample Question', 'Sample Question Text', '2011-03-01 20:56:09', NULL , '0', NULL , '1', '0', '0', '0', '0', '1', '0', 'Alexandros', '127.0.0.1', 'example@example.com's
+'1', 'Sample Question', 'Sample Question Text', '2011-03-01 20:56:09', NULL , '0', NULL , '1', '0', '0', '0', '0', '1', '0', 'Alexandros', '127.0.0.1', 'example@example.com', '0'
 ), (
-'2', 'Sample Answer', 'Sample Answer Text', '2011-03-01 20:56:55', NULL , '0', NULL , '0', '0', '0', '1', '0', '1', '0', 'Alexandros', '127.0.0.1', 'example@examle.com'
+'2', 'Sample Answer', 'Sample Answer Text', '2011-03-01 20:56:55', NULL , '0', NULL , '0', '0', '0', '1', '0', '1', '0', 'Alexandros', '127.0.0.1', 'example@examle.com', '0'
 );

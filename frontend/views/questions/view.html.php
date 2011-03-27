@@ -24,6 +24,11 @@ class AskViewQuestions extends JView
         	$this->questions = $this->get("Items");
         	$this->pagination = $this->get("Pagination");
         	
+        	//Category View
+        	$this->categoryView = FALSE; //Initialization
+        	if (JRequest::getInt( "catid" , 0 ))
+        		$this->categoryView = TRUE;
+        	
         	//Authorizations
         	$user = JFactory::getUser();
         	$this->assignRef("viewanswers", $user->authorize("question.viewanswers" , "com_ask"));

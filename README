@@ -9,14 +9,19 @@ Features:
 * IP logging
 * GRAVATAR Integration
 * FACEBOOK Integration ( Like & Share buttons)
+* Categories support
 
 Things to come:
-* Categories & Tags integration
+* Tags for questions
 * Social Media Integration (Twitter & bookmarking sites) :: This will be configurable
 * Default publishing state options & misc configurations
-* CAPTCHA Integration
+* CAPTCHA for frontend submissions
 * Vote answers
 * Choose best answer
+
+TODOs:
+* Improve Backend submenu detection code
+* Frontend validation on question submission
 
 The project's files are hosted in github: 
 URL: https://github.com/alexd3499/Ask
@@ -29,5 +34,6 @@ Note that first priority after installing is to configure ACL according to your 
 
 Next version (v0.6.x) is coming.. :)
 
-25/3/2011 - Added IP Logging Functionality
-26/3/2011 - Added GRAVATAR support
+25/3/2011 - [FEATURE] [v0.5.7] Added IP Logging Functionality
+26/3/2011 - [FEATURE] [v0.5.8] GRAVATAR support
+27/3/2011 - [FEATURE] [v0.5.9] Categories support

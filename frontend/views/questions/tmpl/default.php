@@ -15,6 +15,11 @@ defined('_JEXEC') or die('Restricted access');
 <?php if ($this->params->get('show_page_heading', 1)) : ?>
 <h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
+	<?php 
+	if ($this->categoryView): //Display Category Name with the title
+		echo " - " . $this->questions[0]->CategoryName;
+	endif;
+	?>
 </h1>
 <?php endif; ?>
 
@@ -24,7 +29,7 @@ defined('_JEXEC') or die('Restricted access');
 		<div class="question" style="margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid #ccc;">
 			<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($question->email))); ?>?s=34" style="float:right; border:2px solid #333;" />			
 			<h2 class="question_title"><a href="<?php echo $question->link; ?>"><?php echo $question->title; ?></a></h2>
-			<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo JFactory::getUser($question->userid_creator)->name; ?> <?php echo JText::_("AT")?> <?php echo $question->submitted; ?></h4>
+			<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($question->userid_creator ? JFactory::getUser($question->userid_creator)->name : $question->name ); ?> <?php echo JText::_("AT")?> <?php echo $question->submitted; ?>. <?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $question->catid); ?>"><?php echo $question->CategoryName; ?></a></h4>
 			<p><?php echo $question->text; ?></p>
 			<div class="question_options">
 				

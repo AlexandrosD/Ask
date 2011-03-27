@@ -1,2 +1,3 @@
 ALTER TABLE `#__ask` ADD `ip` text;
 ALTER TABLE `#__ask` ADD `email` text;
+ALTER TABLE `#__ask` ADD `catid` int(11) NOT NULL DEFAULT '0';

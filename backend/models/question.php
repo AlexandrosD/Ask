@@ -72,16 +72,21 @@ class AskModelQuestion extends JModelAdmin {
 				$app = JFactory::getApplication();
 				$parent = $app->getUserState("parentID");
 				$question = $app->getUserState("isQuestion");
+				$catid = $app->getUserState("catid");
 				
 				if (!$parent){
 					$parent=0;
 				}
 				
+				//Set data
 				$data->parent = $parent;
 				$data->question = $question;
+				$data->catid = $catid;
 				
+				//Clear User State
 				$app->setUserState("isQuestion", 1);
 				$app->setUserState("parentID", 0);
+				$app->setUserState("catid", 0);
 				
 				$logger->info("Question: $question");
 				$logger->info("Parent: $parent");

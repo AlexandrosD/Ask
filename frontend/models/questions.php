@@ -73,16 +73,26 @@ class AskModelQuestions extends JModelList {
 		$db = JFactory::getDbo();
 
 		$query = $db->getQuery(TRUE);
-		$query->select("*");
-		$query->from("#__ask");
+		$query->select("a.*, c.title AS CategoryName");
+		$query->from("#__ask AS a");
+		$query->leftJoin("#__categories AS c ON c.id=a.catid");
 
 		$show_answers = $this->getState("filter.answers" , 0);
 		$show_unpublished = $this->getState("filter.unpublished" , 0);
 
-		if ($show_answers && !$show_unpublished) { $where = "published=1"; }
-		if (!$show_answers && $show_unpublished) { $where = "question=1"; }
-		if (!$show_answers && !$show_unpublished) { $where = "published=1 AND question=1"; }
+		if ($show_answers && !$show_unpublished) { $where = "a.published=1"; }
+		if (!$show_answers && $show_unpublished) { $where = "a.question=1"; }
+		if (!$show_answers && !$show_unpublished) { $where = "a.published=1 AND a.question=1"; }
 		if ($show_answers && $show_unpublished) { $where = NULL; }
+		
+		$catid = $this->getState("filter.catid" , 0);
+		
+		if ($catid){
+			if ($where)
+				$where .= " AND a.catid='$catid'";
+			else
+				$where = "a.catid='$catid'";
+		}
 		
 		if ($where) { $query->where( $where ); }
 		
@@ -130,6 +140,10 @@ class AskModelQuestions extends JModelList {
 
 		$this->setState("filter.unpublished" , $view_unpublished );
 		$this->setState("filter.answers" , $viewanswers);
+		
+		//category view
+		$catid = JRequest::getInt('catid' , 0);
+		$this->setState("filter.catid", $catid);
 
 		$logger->info("filter.unpublished: " . $view_unpublished );
 		$logger->info("filter.answers: " . $viewanswers );

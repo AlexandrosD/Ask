@@ -103,5 +103,17 @@
 			class="inputbox"
 		/>
 		
+		<field
+			name="catid"
+			type="category"
+			extension="com_ask"
+			class="inputbox"
+			default=""
+			label="FRM_Q_CATID"
+			required="true"
+		>
+			 <option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
+		
 	</fieldset>
 </form>

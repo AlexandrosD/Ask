@@ -49,6 +49,8 @@ class AskControllerAnswer extends JController
 		$email = JRequest::getString("email");
 		$email = mysql_real_escape_string($email);
 		
+		$catid = JRequest::getInt("catid");
+		
 		//TODO: Determine State
 		$published = 1;
 		
@@ -80,8 +82,8 @@ class AskControllerAnswer extends JController
 		//Build the insert query
 		$db = JFactory::getDBO();
 		$q = "INSERT INTO #__ask";
-		$q.= "(`id` ,`title` ,`text` ,`submitted` ,`modified` ,`userid_creator` ,`userid_modifier` ,`question` ,`votes_possitive` ,`votes_negative` ,`parent` ,`impressions` ,`published` ,`chosen` , `name`, `ip`, `email`)";
-		$q.= "VALUES (NULL, '$title' , '$text' , '$submitted' , NULL , '$userid_creator' , NULL , '0' , '0' , '0' , '$parent' , '0' , '$published' , '0' , '$name' , '$ip', '$email')";
+		$q.= "(`id` ,`title` ,`text` ,`submitted` ,`modified` ,`userid_creator` ,`userid_modifier` ,`question` ,`votes_possitive` ,`votes_negative` ,`parent` ,`impressions` ,`published` ,`chosen` , `name`, `ip`, `email`, `catid`)";
+		$q.= "VALUES (NULL, '$title' , '$text' , '$submitted' , NULL , '$userid_creator' , NULL , '0' , '0' , '0' , '$parent' , '0' , '$published' , '0' , '$name' , '$ip', '$email', '$catid')";
 		
 		$logger->info($q);
 		
@@ -95,7 +97,8 @@ class AskControllerAnswer extends JController
 			$type="ERROR";
 		}
 		
-		$return = JRoute::_("index.php?option=com_ask&view=question&id=" . $parent);		
+		//$return = JRoute::_("index.php?option=com_ask&view=question&id=" . $parent); //buggy
+		$return = JRequest::getString("returnTo");
 		parent::setRedirect($return , $message , $type);
 	}
 	

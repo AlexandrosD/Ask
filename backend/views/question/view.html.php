@@ -34,6 +34,11 @@ class AskViewQuestion extends JView
 		$this->form = $form;
 		$this->item = $item;
 		
+		//Hide the category field for answers - inherit question's category
+		if (!$this->form->getValue("question")) {
+			$this->form->setFieldAttribute("catid", "type", "hidden");
+		}
+		
 		$this->addToolBar();
 		
 		$logger->info ("AskViewQuestion, calling parent::display()");

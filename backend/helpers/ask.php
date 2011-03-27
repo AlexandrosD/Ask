@@ -16,6 +16,7 @@ abstract class AskHelper {
 	public static function addSubmenu($submenu){		
 		JSubMenuHelper::addEntry(JText::_('QUESTIONS'), 'index.php?option=com_ask', $submenu == "Questions");
 		JSubMenuHelper::addEntry(JText::_('ANSWERS'), 'index.php?option=com_ask&answers=1', $submenu == "Answers");
+		JSubMenuHelper::addEntry(JText::_('CATEGORIES'), 'index.php?option=com_categories&view=categories&extension=com_ask', $submenu == 'categories');
 	}
 	
 	public static function getActions(){
@@ -44,8 +45,12 @@ abstract class AskHelper {
 	}
 	
 	public static function getActiveSubmenu(){
+		$option = JRequest::getVar("option");
 		if ( JRequest::getInt("answers" , 0) ){
 			return "Answers";
+		}
+		elseif ( $option == "com_categories" ){
+			return "Categories";
 		}
 		else {
 			return "Questions";		

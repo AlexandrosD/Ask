@@ -45,12 +45,14 @@ class AskControllerQuestion extends JControllerForm
 		
 		$question = JRequest::getInt("question",1);
 		$parent = JRequest::getInt("parent",0);
+		$catid = JRequest::getInt("catid", 0);
 		
 		$app = JFactory::getApplication();
 		$app->setUserState("isQuestion", $question);
 		$app->setUserState("parentID", $parent);
+		$app->setUserState("catid", $catid);
 		
-		$logger->info ("Item type & parent id set!");
+		$logger->info ("Item type & parent id, catid set!");
 		
 		parent::edit();
 	}

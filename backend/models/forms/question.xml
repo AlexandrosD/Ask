@@ -5,8 +5,7 @@
 		<field
 			name="title"
 			type="text"
-			label="Title"
-			description="Fill in the title"
+			label="FRM_Q_TITLE"
 			size="40"
 			class="inputbox"
 			default=""
@@ -14,8 +13,7 @@
 		<field
 			name="text"
 			type="textarea"
-			label="text"
-			description="Fill in the title"
+			label="FRM_Q_TEXT"
 			rows="10"
 			class="inputbox"
 			default=""
@@ -23,20 +21,20 @@
 		<field
 			name="submitted"
 			type="calendar"
-			label="Submission Date"
+			label="FRM_Q_SUBMISSIONDATE"
 			class="inputbox"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 		/>
 		<field name="userid_creator" 
 			type="user"
-			label="Submitted By" 
+			label="FRM_Q_SUBMITTEDBY" 
 			description="Submitted By" 
 		/>
 		<field
 			name="modified"
 			type="calendar"
-			label="Last Modification"
+			label="FRM_Q_LASTMOD"
 			class="readonly"
 			readonly="true"
 			size="22"
@@ -51,7 +49,7 @@
 		<field
 			name="question"
 			type="list"
-			label="Type"
+			label="FRM_Q_TYPE"
 			description="Type"
 			class="readonly"
 			readonly="true"
@@ -76,7 +74,7 @@
 		/>
 		<field
 			name="parent"
-			label="Parent Question"
+			label="FRM_Q_PARENT"
 			class="readonly"
 			readonly="true"
 		/>
@@ -114,10 +112,23 @@
 		<field
 			name="email"
 			type="text"
-			label="email"
+			label="FRM_Q_EMAIL"
 			class="inputbox"
 			size="40"
 		/>
+		
+		<field
+			name="catid"
+			type="category"
+			extension="com_ask"
+			class="inputbox"
+			default=""
+			label="FRM_Q_CATID"
+			required="true"
+		>
+			 <option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
+			
 		
 	</fieldset>
 </form>

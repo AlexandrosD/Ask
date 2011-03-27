@@ -43,6 +43,11 @@ JHtml::_('behavior.formvalidation');
 		<?php echo $this->form->getInput("text");?>
 	</div>
 	
+	<div class="formelm">
+		<?php echo $this->form->getLabel("catid");?>
+		<?php echo $this->form->getInput("catid");?>
+	</div>
+	
 	<?php 
 	//HIDDEN FIELDS
 	echo $this->form->getInput("id");
