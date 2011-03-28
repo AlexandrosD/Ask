@@ -1,8 +1,8 @@
 #!/bin/bash
-#usage makeinstall.sh
+#usage makeinstall.sh VERSION
 TMPDIR="TMP"
-PACKAGEDIR="."
-OUTPUT="com_ask.zip"
+PACKAGEDIR="./packages"
+OUTPUT=com_ask.$1.zip
 DATE=`date`
 mv $PACKAGEDIR/$OUTPUT $PACKAGEDIR/$OUTPUT.old.$DATE
 mkdir $TMPDIR
@@ -16,5 +16,5 @@ cp README $TMPDIR/
 cd $TMPDIR/
 zip -r $OUTPUT *
 cd ../
-mv $TMPDIR/ask.zip $PACKAGEDIR
+mv $TMPDIR/$OUTPUT $PACKAGEDIR
 rm -r $TMPDIR/
