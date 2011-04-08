@@ -33,9 +33,10 @@ https://github.com/alexd3499/Ask/issues
 Note that first priority after installing is to configure ACL according to your needs. By default, unregistered users are neither allowed to display aswers to questions, nor to submit them.
 
 -------------------------------------------------------------
-|		VERSION HISTORY ( Current is v0.6.1 )				|
+|		VERSION HISTORY ( Current is v0.6.2 )				|
 -------------------------------------------------------------
-25/3/2011 - [FEATURE] [v0.6.1] Added IP Logging Functionality
-26/3/2011 - [FEATURE] [v0.6.1] GRAVATAR support
-27/3/2011 - [FEATURE] [v0.6.1] Categories support
-27/3/2011 - [FEATURE] [v0.6.1] Changes in the shell script that creates the package file
+25/03/2011 - [FEATURE] [v0.6.1] Added IP Logging Functionality
+26/03/2011 - [FEATURE] [v0.6.1] GRAVATAR support
+27/03/2011 - [FEATURE] [v0.6.1] Categories support
+27/03/2011 - [FEATURE] [v0.6.1] Changes in the shell script that creates the package file
+08/04/2011 - [FIX] [v0.6.2] Fixed update bug
