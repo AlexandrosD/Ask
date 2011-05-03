@@ -2,5 +2,5 @@
 <buildpath>
 	<buildpathentry kind="src" path=""/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
-	<buildpathentry combineaccessrules="false" kind="prj" path="/joomla_1.6_dev"/>
+	<buildpathentry combineaccessrules="false" kind="prj" path="/Joomla1.6"/>
 </buildpath>

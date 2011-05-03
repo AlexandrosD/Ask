@@ -18,7 +18,7 @@ CREATE TABLE `#__ask` (
   `name` text,
   `ip` text,
   `email` text,
-  `catid` int(11) NOT NULL DEFAULT '0'
+  `catid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
