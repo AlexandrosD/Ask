@@ -82,6 +82,11 @@
                         <language tag="en-GB">language/en-GB/en-GB.com_ask.ini</language>
                         <language tag="en-GB">language/en-GB/en-GB.com_ask.sys.ini</language>
                 </languages>
+                
+                <languages folder="admin">
+                        <language tag="fr-FR">language/fr-FR/fr-FR.com_ask.ini</language>
+                        <language tag="fr-FR">language/fr-FR/fr-FR.com_ask.sys.ini</language>
+                </languages>
         </administration>
  
 </extension>
