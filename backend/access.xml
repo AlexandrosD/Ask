@@ -11,7 +11,7 @@
 		<!--<action name="question.own_edit" title="QUESTION_OWN_EDIT" description="" />-->
 		<!--<action name="question.own_delete" title="QUESTION_OWN_DELETE" desctiption="" />-->		
 		<action name="question.viewanswers" title="QUESTION_VIEWANSWERS" description="" />
-		<!--<action name="question.vote" title="QUESTION_VOTE" description="" />-->
+		<action name="question.vote" title="QUESTION_VOTE" description="" />
 		<action name="core.admin" title="CORE_ADMIN" description="" /> 
 	</section>
 </access>

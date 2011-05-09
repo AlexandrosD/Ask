@@ -1,0 +1,78 @@
+@CHARSET "UTF-8";
+div.votebox{
+	float:left; margin-top: 0px; margin-right: 10px;
+}
+
+div.votebox span{
+	float: left;
+	clear: both;
+	width:52px;
+	text-align: center;
+	font-size: 20px;
+}
+
+div.votebox a img {
+	border: 0px !important;
+}
+
+div.question_options {
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	width: 100%;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 16px;
+}
+
+div.pagination{
+	float: left;
+	width: 100%;	
+}
+
+div.question {
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	margin-top: 5px;
+	float: left;
+	width: 100%;
+	clear: both;
+}
+
+div.boxes {
+	float: left;
+	padding-top: 8px;
+	margin-right: 5px;
+	width: 220px;
+	max-width: 30% !important;
+}
+
+div.boxes span.votes,
+div.boxes span.answers,
+div.boxes span.impressions {
+	margin: 5px;
+	width: 60px;
+	float: left;
+	text-align: center;
+	font-size: 22px;
+}
+
+div.boxes span span.label {
+	font-size: 12px;
+}
+
+div.question_data {
+	float: left;
+	max-width: 60%;
+}
+
+div.boxes a:link,
+div.boxes a:active,
+div.boxes a:visited,
+div.boxes a:hover {
+	text-decoration: none;
+	color: #000000 !important;
+}

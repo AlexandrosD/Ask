@@ -57,6 +57,31 @@ class AskModelQuestions extends JModelList {
 		
 		foreach ($questions as $question){
 			$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id ); 
+			
+			//votes
+	        $question->votes = $question->votes_possitive + $question->votes_negative;
+	        $question->score = $question->votes_possitive - $question->votes_negative;
+	        
+	        $question->votes2 = $question->votes;
+			$question->score2 = $question->score;
+	        
+	        //calculate..
+		 	if ($question->votes > 1000){
+	        	$v = $question->votes / 1000;
+	        	$question->votes2 = round($v,1) . "K";
+	        }
+	        
+		 	if ($question->score > 1000){
+	        	$s = $question->score / 1000;
+	        	$question->score2 = round($s,1) . "K";
+	        }
+	        
+	        //count answers
+	        $q="SELECT COUNT(*) FROM #__ask WHERE parent='" . $question->id  . "'";
+	        $db = JFactory::getDbo();
+	        $db->setQuery($q);
+	        $question->answerscount = $db->loadResult();
+	        
 		}
 
 		$items = $questions;

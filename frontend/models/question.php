@@ -70,6 +70,24 @@ class AskModelQuestion extends JModelItem {
 			}
 		}
 		
+		//votes
+        $question->votes = $question->votes_possitive + $question->votes_negative;
+        $question->score = $question->votes_possitive - $question->votes_negative;
+        
+        $question->votes2 = $question->votes;
+		$question->score2 = $question->score;
+        
+        //calculate..
+	 	if ($question->votes > 1000){
+        	$v = $question->votes / 1000;
+        	$question->votes2 = round($v,1) . "K";
+        }
+        
+	 	if ($question->score > 1000){
+        	$s = $question->score / 1000;
+        	$question->score2 = round($s,1) . "K";
+        }
+		
 		$this->item = $question;
 		
 		//hit!
@@ -101,6 +119,25 @@ class AskModelQuestion extends JModelItem {
 		
 		if ($answers){
 			$logger->info("Loaded " . count($answers) . " answers for question with id=" . $this->id );
+			//votes 
+	        foreach ($answers as $answer){
+		        $answer->votes = $answer->votes_possitive + $answer->votes_negative;
+		       	$answer->score = $answer->votes_possitive - $answer->votes_negative;
+		       	
+		       	$answer->votes2 = $answer->votes;
+		       	$answer->score2 = $answer->score;
+		       	
+		         //calculate..
+			 	if ($answer->votes > 1000){
+		        	$v = $answer->votes / 1000;
+		        	$answer->votes2 = round($v,1) . "K";
+		        }
+		        
+			 	if ($answer->score > 1000){
+		        	$s = $answer->score / 1000;
+		        	$answer->score2 = round($s,1) . "K";
+		        }
+	        }
 			return $answers;
 		}
 		else {
@@ -232,9 +269,8 @@ class AskModelQuestion extends JModelItem {
 		}
 	}
 	
-	private function store(){ //TODO: What's this ??
-		global $logger;
-		
+	private function store(){
+		global $logger;		
 	}
 	
 }

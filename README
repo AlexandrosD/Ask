@@ -10,13 +10,13 @@ Features:
 * GRAVATAR Integration
 * FACEBOOK Integration ( Like & Share buttons)
 * Categories support
+* Vote answers
 
 Things to come:
 * Tags for questions
 * Social Media Integration (Twitter & bookmarking sites) :: This will be configurable
 * Default publishing state options & misc configurations
 * CAPTCHA for frontend submissions
-* Vote answers
 * Choose best answer
 
 TODOs:

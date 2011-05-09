@@ -33,7 +33,7 @@ class AskViewQuestion extends JView
         	$params = $app->getParams();
         	$this->assignRef("params", $params);
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
-       
+        	
         	if ( @$this->question ){ //check for questions, suppressing errors..
 	        	//$logger->info ( json_encode($this->question) );
 	        	parent::display($tpl);

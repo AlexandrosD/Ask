@@ -23,8 +23,13 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 <?php endif; ?>
 
 <div class="questions<?php echo $this->pageclass_sfx; ?>">
+	<div class="votebox">
+		<a class="possitive" href="<?php echo JRoute::_("index.php?option=com_ask&task=question.votepossitive&id=" . $this->question->id)?>"><img src="components/com_ask/media/plus.png" /></a><br/>
+		<span class="score"><?php echo $this->question->score2; ?></span><br />
+		<a class="negative" href="<?php echo JRoute::_("index.php?option=com_ask&task=question.votenegative&id=" . $this->question->id)?>"><img src="components/com_ask/media/minus.png" /></a>
+	</div>
 	
-	<img class="ask_grvatar_big" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($this->question->email))); ?>?s=64" style="float:right; border:2px solid #333;" />
+	<img class="ask_gravatar_big" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($this->question->email))); ?>?s=64" style="float:right; border:2px solid #333;" />
 	
 	<h2><?php echo $this->question->title; ?></h2>
 	
@@ -50,9 +55,14 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 	
 	<?php if ($this->viewanswers):?>
 		<!-- ANSWERS -->
-		<a name="#answers">&nbsp;</a>
+		<a name="answers">&nbsp;</a>
 		<?php foreach ($this->question->answers as $answer):?>
 		<div class="answer" style="padding-bottom:3px; margin-bottom:3px; border-bottom: 1px solid #ccc;">
+			<div class="votebox">
+				<a class="possitive" href="<?php echo JRoute::_("index.php?option=com_ask&task=question.votepossitive&id=" . $answer->id)?>"><img src="components/com_ask/media/plus.png" /></a><br />
+				<span class="score"><?php echo $answer->score2; ?></span><br />
+				<a class="negative" href="<?php echo JRoute::_("index.php?option=com_ask&task=question.votenegative&id=" . $answer->id)?>"><img src="components/com_ask/media/minus.png" /></a>
+			</div>
 			<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($answer->email))); ?>?s=34" style="float:right; border:2px solid #333;" />
 			<h3><?php echo $answer->title; ?></h3>
 			<h5><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo $answer->name; ?> <?php echo JText::_("AT"); ?>  <?php echo $answer->submitted; ?></h5>
@@ -63,7 +73,7 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 	
 	<?php if ($this->submitanswers):?>
 		<!-- ANSWER FORM -->
-		<a name="#newanswer">&nbsp;</a>
+		<a name="newanswer">&nbsp;</a>
 		<?php echo $this->loadTemplate('form'); ?>
 	<?php endif;?>	
 	
