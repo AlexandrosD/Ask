@@ -11,13 +11,13 @@ Features:
 * FACEBOOK Integration ( Like & Share buttons)
 * Categories support
 * Vote answers
+* Choose best answer
 
 Things to come:
 * Tags for questions
 * Social Media Integration (Twitter & bookmarking sites) :: This will be configurable
 * Default publishing state options & misc configurations
 * CAPTCHA for frontend submissions
-* Choose best answer
 
 TODOs:
 * Improve Backend submenu detection code
@@ -41,3 +41,5 @@ Note that first priority after installing is to configure ACL according to your 
 27/03/2011 - [FEATURE] [v0.6.1] Changes in the shell script that creates the package file
 08/04/2011 - [FIX] [v0.6.2] Fixed update bug
 01/05/2011 - [FIX] [v0.6.3] Fixed installation bug
+09/05/2011 - [FEATURE] [v0.6.4] Voting functionallity
+10/05/2011 - [FEATURE] [v0.6.5] Answe Choosing functionallity
