@@ -97,9 +97,43 @@ class AskControllerAnswer extends JController
 			$type="ERROR";
 		}
 		
-		//$return = JRoute::_("index.php?option=com_ask&view=question&id=" . $parent); //buggy
 		$return = JRequest::getString("returnTo");
 		parent::setRedirect($return , $message , $type);
+	}
+	
+	public function choose(){
+		$ok = FALSE;
+		
+		//IDs..
+		$qid = JRequest::getInt("questionid");
+		$aid = JRequest::getInt("answerid");
+		
+		$q = "UPDATE #__ask SET chosen=0 WHERE parent=$qid";
+		$db = JFactory::getDbo();
+		$db->setQuery($q);
+		
+		if ($db->query())
+			$ok = TRUE;
+		else 
+			$err = " - " . $db->getErrorMsg();
+		
+		if ($ok){
+			$q="UPDATE #__ask SET chosen=1 WHERE id=$aid";
+			
+			$db->setQuery($q);
+			
+			if ($db->query())
+				$ok = TRUE;
+			else 
+				$err = $db->getErrorMsg();
+		}
+			
+		if ($ok)
+			$msg = JText::_("ANSWER_CHOOSE_OK");
+		else
+			$msg = JText::_("ANSWER_CHOOSE_NOK") . $err;
+		
+		$this->setRedirect( JRoute::_("index.php?option=com_ask&view=question&id=$qid") , $msg);
 	}
 	
 }

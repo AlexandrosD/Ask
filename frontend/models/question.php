@@ -110,7 +110,7 @@ class AskModelQuestion extends JModelItem {
 		$query->select("*");
 		$query->from("#__ask");
 		$query->where("parent=" . $this->id );
-		$query->order("submitted DESC");
+		$query->order("chosen DESC, votes_possitive-votes_negative DESC, submitted DESC");
 		
 		$logger->info("SQL Query for answers: " . $query);
 		

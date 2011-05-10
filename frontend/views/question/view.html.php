@@ -34,6 +34,10 @@ class AskViewQuestion extends JView
         	$this->assignRef("params", $params);
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
         	
+        	$user = JFactory::getUser();
+        	$isOwner = (bool)($user->id == $this->question->userid_creator && $user->id != 0 );
+        	$this->assignRef("isOwner", $isOwner);
+        	
         	if ( @$this->question ){ //check for questions, suppressing errors..
 	        	//$logger->info ( json_encode($this->question) );
 	        	parent::display($tpl);

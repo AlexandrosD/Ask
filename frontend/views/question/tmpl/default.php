@@ -57,7 +57,7 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 		<!-- ANSWERS -->
 		<a name="answers">&nbsp;</a>
 		<?php foreach ($this->question->answers as $answer):?>
-		<div class="answer" style="padding-bottom:3px; margin-bottom:3px; border-bottom: 1px solid #ccc;">
+		<div class="answer<?php if ($answer->chosen){ echo " chosen"; }?>" style="padding-bottom:3px; margin-bottom:3px; border-bottom: 1px solid #ccc;">
 			<div class="votebox">
 				<a class="possitive" href="<?php echo JRoute::_("index.php?option=com_ask&task=question.votepossitive&id=" . $answer->id)?>"><img src="components/com_ask/media/plus.png" /></a><br />
 				<span class="score"><?php echo $answer->score2; ?></span><br />
@@ -67,6 +67,9 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 			<h3><?php echo $answer->title; ?></h3>
 			<h5><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo $answer->name; ?> <?php echo JText::_("AT"); ?>  <?php echo $answer->submitted; ?></h5>
 			<p><?php echo $answer->text; ?></p>
+			<?php if ($this->isOwner && $answer->chosen != 1 ): ?>
+			<span class="choose_answer"><a href="<?php echo JRoute::_("index.php?option=com_ask&task=answer.choose&questionid=" . $this->question->id . "&answerid=" . $answer->id)?>"><?php echo JText::_("CHOOSE")?></a></span>
+			<?php endif;?>
 		</div>
 		<?php endforeach;?>
 	<?php endif;?>

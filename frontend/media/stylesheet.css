@@ -76,3 +76,23 @@ div.boxes a:hover {
 	text-decoration: none;
 	color: #000000 !important;
 }
+
+div.answer{
+	padding: 5px;
+	margin-top: 10px;
+	min-height: 80px;
+}
+
+div.answer h3{
+	 display: inline;
+}
+
+div.answer.chosen{
+	background: #eeeeee;
+	border: 1px solid #ccc;
+}
+
+span.choose_answer {
+	width: 100%;
+	display: inline-block;
+}
