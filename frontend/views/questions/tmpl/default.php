@@ -36,11 +36,25 @@ defined('_JEXEC') or die('Restricted access');
 				</a>
 			</div>
 			
-			<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($question->email))); ?>?s=34" style="float:right; border:2px solid #333;" />
-			
-			<div class="question_data">			
-				<h2 class="question_title"><a href="<?php echo $question->link; ?>"><?php echo $question->title; ?></a></h2>
-				<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($question->userid_creator ? JFactory::getUser($question->userid_creator)->name : $question->name ); ?> <?php echo JText::_("AT")?> <?php echo $question->submitted; ?>. <?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $question->catid); ?>"><?php echo $question->CategoryName; ?></a></h4>
+			<div class="question_body">
+				<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($question->email))); ?>?s=34" style="float:right; border:2px solid #333;" />
+				
+				<div class="question_data">			
+					<h2 class="question_title"><a href="<?php echo $question->link; ?>"><?php echo $question->title; ?></a></h2>
+					<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($question->userid_creator ? JFactory::getUser($question->userid_creator)->name : $question->name ); ?> <?php echo JText::_("AT")?> <?php echo $question->submitted; ?>. <?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $question->catid); ?>"><?php echo $question->CategoryName; ?></a></h4>
+				</div>
+				
+				<div class="question_tags">
+					<?php 
+					if ($question->tags):
+						foreach ($question->tags as $tag):
+						?>
+						<a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&tag=" . $tag); ?>"><?php echo $tag ?></a>
+					<?php 
+						endforeach;
+					endif;
+					?>
+				</div>
 			</div>
 			
 		</div>

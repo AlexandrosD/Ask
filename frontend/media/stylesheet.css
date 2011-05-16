@@ -96,3 +96,7 @@ span.choose_answer {
 	width: 100%;
 	display: inline-block;
 }
+
+div.question_tags {
+	display: inline-block;	
+}

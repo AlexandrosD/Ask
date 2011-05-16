@@ -128,6 +128,14 @@
 		>
 			 <option value="0">JOPTION_SELECT_CATEGORY</option>
 		</field>
+		
+		<field
+			name="tags"
+			type="text"
+			label="FRM_Q_TAGS"
+			class="inputbox"
+			size="40"
+		/>
 			
 		
 	</fieldset>

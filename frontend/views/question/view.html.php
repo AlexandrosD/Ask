@@ -38,6 +38,7 @@ class AskViewQuestion extends JView
         	$isOwner = (bool)($user->id == $this->question->userid_creator && $user->id != 0 );
         	$this->assignRef("isOwner", $isOwner);
         	
+        	
         	if ( @$this->question ){ //check for questions, suppressing errors..
 	        	//$logger->info ( json_encode($this->question) );
 	        	parent::display($tpl);

@@ -12,16 +12,18 @@ Features:
 * Categories support
 * Vote answers
 * Choose best answer
+* Transparent Captcha for frontend submissions
 
 Things to come:
 * Tags for questions
-* Social Media Integration (Twitter & bookmarking sites) :: This will be configurable
+* Custom Code support (i.e for utilizing social plugins)
 * Default publishing state options & misc configurations
-* CAPTCHA for frontend submissions
+* Filtering/sorting options (Frontend)
 
 TODOs:
 * Improve Backend submenu detection code
 * Frontend validation on question submission
+* Add CSRF anti-spoofing to forms (http://docs.joomla.org/How_to_add_CSRF_anti-spoofing_to_forms)
 
 The project's files are hosted in github: 
 URL: https://github.com/alexd3499/Ask
@@ -42,4 +44,5 @@ Note that first priority after installing is to configure ACL according to your 
 08/04/2011 - [FIX] [v0.6.2] Fixed update bug
 01/05/2011 - [FIX] [v0.6.3] Fixed installation bug
 09/05/2011 - [FEATURE] [v0.6.4] Voting functionallity
-10/05/2011 - [FEATURE] [v0.6.5] Answe Choosing functionallity
+10/05/2011 - [FEATURE] [v0.6.5] Answer Choosing functionallity
+16/05/2011 - [FEATURE] [v1.0.0] Tags

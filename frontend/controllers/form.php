@@ -20,6 +20,12 @@ class AskControllerForm extends JControllerForm {
 		global $logger;
 		$logger->info("AskControllerForm::save()");
 		
+		//Transparent Captcha
+		$captcha = JRequest::getString("LastName");
+		if ($captcha){
+			JError::raiseError(404 , ""); 
+		}
+		
 		parent::save();
 		
 		$this->setRedirect(JRoute::_("index.php?option=com_ask&view=questions"));

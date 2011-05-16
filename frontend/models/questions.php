@@ -82,6 +82,9 @@ class AskModelQuestions extends JModelList {
 	        $db->setQuery($q);
 	        $question->answerscount = $db->loadResult();
 	        
+	        //tags
+	        $question->tags = json_decode($question->tags);
+	        
 		}
 
 		$items = $questions;

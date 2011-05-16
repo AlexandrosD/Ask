@@ -84,7 +84,11 @@ JHtml::_('behavior.tooltip');
 	                	<?php echo ($item->CategoryName); ?>
 	                </td>
 	                <td class="center">
-	                	(Phase II)
+	                	<?php 
+	                	if ($item->tags)
+	                		foreach ($item->tags as $tag)
+	                			echo $tag . " "
+	                	?>
 	                </td>
 	                <td class="center">
 	                	<?php echo $item->submitted; ?>

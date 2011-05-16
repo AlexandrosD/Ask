@@ -41,6 +41,13 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 		<label for="text"><?php echo JText::_("FRM_Q_TEXT");?></label>
 		<textarea id="text" name="text" maxlength="350" rows="10" cols="50" style="display:block;"><?php echo JRequest::getString("text")?></textarea>
 		
+		<br />
+		
+		<div style="display:none;">
+			<label for="LastName">You should normally cannot see this field. If you are, please leave it empty.</label>
+			<input id="LastName" name="LastName" type="text" />
+		</div>
+		
 		<div class="formelm-buttons">
 			<button type="button" onclick="Joomla.submitbutton('answer.save')">
 				<?php echo JText::_('SUBMIT_ANSWER') ?>

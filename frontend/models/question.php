@@ -87,6 +87,9 @@ class AskModelQuestion extends JModelItem {
         	$s = $question->score / 1000;
         	$question->score2 = round($s,1) . "K";
         }
+        
+        //tags
+        $question->tags = json_decode($question->tags);
 		
 		$this->item = $question;
 		

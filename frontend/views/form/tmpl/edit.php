@@ -48,6 +48,11 @@ JHtml::_('behavior.formvalidation');
 		<?php echo $this->form->getInput("catid");?>
 	</div>
 	
+	<div style="display:none;">
+		<label for="LastName">You should normally cannot see this field. If you are, please leave it empty.</label>
+		<input id="LastName" name="LastName" type="text" />
+	</div>
+	
 	<?php 
 	//HIDDEN FIELDS
 	echo $this->form->getInput("id");

@@ -35,6 +35,18 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 	
 	<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($this->question->userid_creator ? JFactory::getUser($this->question->userid_creator)->name : $this->question->name); ?> <?php echo JText::_("AT")?> <?php echo $this->question->submitted; ?>. 	<?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $this->question->catid); ?>"><?php echo $this->question->CategoryName; ?></a></h4>
 	
+	<div class="question_tags">
+		<?php 
+		if ($this->question->tags):
+			foreach ($this->question->tags as $tag):
+				?>
+				<a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&tag=" . $tag); ?>"><?php echo $tag ?></a>
+			<?php 
+			endforeach;
+		endif;
+		?>
+	</div>
+	
 	<p><?php echo $this->question->text; ?></p>
 	
 	<div class="fb_buttons"> 

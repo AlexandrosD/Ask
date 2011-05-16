@@ -35,6 +35,10 @@ class AskViewQuestions extends JView
 					$parent = $db->loadObject();
 				}
 				$item->parentData = $parent;
+				
+				//tags
+				$item->tags = json_decode($item->tags);
+				
 			}
 			
             // Display the template

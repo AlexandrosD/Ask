@@ -57,6 +57,11 @@ class AskModelQuestion extends JModelAdmin {
 				
 				$data->userid_modifier = $user->id;
 				$data->modified = date("Y-m-d H:i:s");
+				
+				//tags
+				if ($data->tags){
+					$data->tags = implode(", " , json_decode($data->tags));
+				}
 			}
 			
 			if ( $data->id==0 ) { 

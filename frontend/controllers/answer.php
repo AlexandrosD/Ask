@@ -25,6 +25,12 @@ class AskControllerAnswer extends JController
 		global $logger;
 		$logger->info("Saving Answer..");
 		
+		//Transparent Captcha
+		$captcha = JRequest::getString("LastName");
+		if ($captcha){
+			JError::raiseError(404 , ""); 
+		}
+		
 		$title = JRequest::getString("title");
 		$title = htmlspecialchars($title);
 		$title = mysql_real_escape_string($title);
