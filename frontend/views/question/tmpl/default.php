@@ -33,7 +33,7 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 	
 	<h2><?php echo $this->question->title; ?></h2>
 	
-	<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($this->question->userid_creator ? JFactory::getUser($this->question->userid_creator)->name : $this->question->name); ?> <?php echo JText::_("AT")?> <?php echo $this->question->submitted; ?>. 	<?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $this->question->catid); ?>"><?php echo $this->question->CategoryName; ?></a></h4>
+	<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($this->question->userid_creator ? JFactory::getUser($this->question->userid_creator)->name : $this->question->name); ?> <?php echo JText::_("AT")?> <?php echo JHtml::date($this->question->submitted); ?>. 	<?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $this->question->catid); ?>"><?php echo $this->question->CategoryName; ?></a></h4>
 	
 	<div class="question_tags">
 		<?php 
@@ -77,7 +77,7 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 			</div>
 			<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($answer->email))); ?>?s=34" style="float:right; border:2px solid #333;" />
 			<h3><?php echo $answer->title; ?></h3>
-			<h5><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo $answer->name; ?> <?php echo JText::_("AT"); ?>  <?php echo $answer->submitted; ?></h5>
+			<h5><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo $answer->name; ?> <?php echo JText::_("AT"); ?>  <?php echo JHtml::date($answer->submitted); ?></h5>
 			<p><?php echo $answer->text; ?></p>
 			<?php if ($this->isOwner && $answer->chosen != 1 ): ?>
 			<span class="choose_answer"><a href="<?php echo JRoute::_("index.php?option=com_ask&task=answer.choose&questionid=" . $this->question->id . "&answerid=" . $answer->id)?>"><?php echo JText::_("CHOOSE")?></a></span>

@@ -15,10 +15,12 @@ Features:
 * Transparent Captcha for frontend submissions
 
 Things to come:
-* Tags for questions
+* Tags for questions [under developement now]
 * Custom Code support (i.e for utilizing social plugins)
 * Default publishing state options & misc configurations
 * Filtering/sorting options (Frontend)
+
+* Modules
 
 TODOs:
 * Improve Backend submenu detection code

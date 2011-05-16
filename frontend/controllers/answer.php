@@ -31,81 +31,92 @@ class AskControllerAnswer extends JController
 			JError::raiseError(404 , ""); 
 		}
 		
-		$title = JRequest::getString("title");
-		$title = htmlspecialchars($title);
-		$title = mysql_real_escape_string($title);
-		
-		$text = JRequest::getString("text");
-		$text = htmlspecialchars($text);
-		$text = mysql_real_escape_string($text);
-		
-		$name = JRequest::getString("name");
-		$name = htmlspecialchars($name);
-		$name = mysql_real_escape_string($name);
-		
-		$parent = (int) JRequest::getInt("question_id");
-		$parent = mysql_real_escape_string($parent);
-		
-		$submitted = date("Y-m-d H:i");
-		$userid_creator = JFactory::getUser()->id;
-		
-		$ip = JRequest::getString("ip");
-		$ip = mysql_real_escape_string($ip);
-		
-		$email = JRequest::getString("email");
-		$email = mysql_real_escape_string($email);
-		
-		$catid = JRequest::getInt("catid");
-		
-		//TODO: Determine State
-		$published = 1;
-		
-		//VALIDATE DATA
-		$valid = TRUE;
-		$msg = "";
-		
-		if ((!JFactory::getUser()->id) && (!$name)){
-			$valid = FALSE;
-			$msg.="<br />" . JText::_("ERR_ANSWER_NONAME");
-		}
-		
-		if (!$text) {
-			$valid = FALSE;
-			$msg.="<br />" . JText::_("ERR_ANSWER_NOTEXT");
-		}
-		
-		if (!$title){
-			$valid = FALSE;
-			$msg.="<br />" . JText::_("ERR_ANSWER_NOTITLE");
-		}
-		
-		if(!$valid){
-			$return = JRoute::_("index.php?option=com_ask&view=question&name=$name&title=$title&text=$text&id=" . $parent);		
-			parent::setRedirect($return , JText::_("ERR_FILL_ALL_REQ_FIELDS") . $msg , "ERROR");
-			return;
-		}
-		
-		//Build the insert query
-		$db = JFactory::getDBO();
-		$q = "INSERT INTO #__ask";
-		$q.= "(`id` ,`title` ,`text` ,`submitted` ,`modified` ,`userid_creator` ,`userid_modifier` ,`question` ,`votes_possitive` ,`votes_negative` ,`parent` ,`impressions` ,`published` ,`chosen` , `name`, `ip`, `email`, `catid`)";
-		$q.= "VALUES (NULL, '$title' , '$text' , '$submitted' , NULL , '$userid_creator' , NULL , '0' , '0' , '0' , '$parent' , '0' , '$published' , '0' , '$name' , '$ip', '$email', '$catid')";
-		
-		$logger->info($q);
-		
-		$db->setQuery($q);
-		
-		if ($db->query()){
-			$message = JText::_("MSG_ANSW_SAVED");
-			$type = NULL;
-		} else {
-			$message = JText::_("MSG_ANSW_NOSAVE");
-			$type="ERROR";
-		}
-		
-		$return = JRequest::getString("returnTo");
-		parent::setRedirect($return , $message , $type);
-	}
+	 $title = JRequest::getString("title");
+        //static method getString clean variable htmlspecialchars() not required (xss cleanup) see request.php line 248
+        
+        
+        $text = JRequest::getString("text");
+
+        $name = JRequest::getString("name");
+        $parent = (int) JRequest::getInt("question_id");
+
+
+        $submitted = date("Y-m-d H:i");
+        $userid_creator = JFactory::getUser()->id;
+
+        $ip = JRequest::getString("ip");
+        $email = JRequest::getString("email");
+        $catid = JRequest::getInt("catid");
+
+
+
+        //TODO: Determine State
+        $published = 1;
+
+        //VALIDATE DATA
+        $valid = TRUE;
+        $msg = "";
+
+        if ((!JFactory::getUser()->id) && (!$name)) {
+            $valid = FALSE;
+            $msg.="<br />" . JText::_("ERR_ANSWER_NONAME");
+        }
+
+        if (!$text) {
+            $valid = FALSE;
+            $msg.="<br />" . JText::_("ERR_ANSWER_NOTEXT");
+        }
+
+        if (!$title) {
+            $valid = FALSE;
+            $msg.="<br />" . JText::_("ERR_ANSWER_NOTITLE");
+        }
+
+        if (!$valid) {
+            $return = JRoute::_("index.php?option=com_ask&view=question&name=$name&title=$title&text=$text&id=" . $parent);
+            parent::setRedirect($return, JText::_("ERR_FILL_ALL_REQ_FIELDS") . $msg, "ERROR");
+            return;
+        }
+
+        $db = JFactory::getDBO();
+
+
+
+        $data = new stdClass;
+
+        
+        $data->id = NULL;
+        $data->title = $title;
+        $data->text = $text;
+        $data->submitted = $submitted;
+        $data->modified = NULL;
+        $data->userid_creator = $userid_creator;
+        $data->userid_modifier = NULL;
+        $data->question = 0;
+        $data->votes_possitive = 0;
+        $data->votes_negative = 0;
+        $data->parent = $parent;
+        $data->impressions = 0;
+        $data->published = $published;
+        $data->chosen = 0;
+        $data->name = $name;
+        $data->ip = $ip;
+        $data->email = $email;
+        $data->catId = $catid;
+        
+        
+
+        if ($db->insertObject('#__ask', $data)) {
+            $message = JText::_("MSG_ANSW_SAVED");
+            $type = NULL;
+        } else {
+            $message = JText::_("MSG_ANSW_NOSAVE");
+            $type = "ERROR";
+        }
+
+        $return = JRequest::getString("returnTo");
+        parent::setRedirect($return, $message, $type);
+    }
 	
 	public function choose(){
 		$ok = FALSE;
@@ -143,3 +154,5 @@ class AskControllerAnswer extends JController
 	}
 	
 }
+
+       
