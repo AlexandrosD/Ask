@@ -37,16 +37,16 @@ class AskControllerQuestion extends JControllerForm
 		if ($tags){
 			$tags = explode("," , $tags);
 			$tags = json_encode ( $tags );
-			$tags = str_replace('" ', '"', $tags);
+			$tags = str_replace(' ', '', $tags);
 			$tags = str_replace(',""', '', $tags);
 			$tags = json_decode($tags);
 			//remove duplicates
 			$tags = array_values(array_unique($tags));
 			$tags = json_encode ( $tags );
 			$data['tags'] = $tags;
+			//replace the request object
+			JRequest::setVar("jform" , $data);
 		}
-		
-		JRequest::setVar("jform" , $data);
 		
 		parent::save();
 		

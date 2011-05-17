@@ -26,13 +26,33 @@ class AskControllerForm extends JControllerForm {
 			JError::raiseError(404 , ""); 
 		}
 		
+		//Encode the tags to json..
+		$data = JRequest::getVar('jform', array(), 'post', 'array');
+		$tags = $data["tags"];
+		if ($tags){
+			$tags = explode("," , $tags);
+			$tags = json_encode ( $tags );
+			$tags = str_replace(' ', '', $tags);
+			$tags = str_replace(',""', '', $tags);
+			$tags = json_decode($tags);
+			//remove duplicates
+			$tags = array_values(array_unique($tags));
+			$tags = json_encode ( $tags );
+			$data['tags'] = $tags;
+			//replace the original request
+			JRequest::setVar("jform" , $data);
+		}		
+		
 		parent::save();
 		
-		$this->setRedirect(JRoute::_("index.php?option=com_ask&view=questions"));
+		$db = &JFactory::getDbo();
+		
+		//redirect to t
+		$this->setRedirect(JRoute::_("index.php?option=com_ask&view=question&id=") . $db->insertid());
 	}
 	
 	public function cancel(){
-		$this->setRedirect(JRoute::_("index.php?option=com_ask&view=questions"));
+		echo "<script type='text/javascript'>javascript:history.go(-2);</script>";
 	}
 	
 }

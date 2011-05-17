@@ -28,6 +28,9 @@ class AskViewQuestions extends JView
         	$this->categoryView = FALSE; //Initialization
         	if (JRequest::getInt( "catid" , 0 ))
         		$this->categoryView = TRUE;
+        		
+        	//Tag View
+        	$this->tag = JRequest::getString("tag" , NULL);
         	
         	//Authorizations
         	$user = JFactory::getUser();

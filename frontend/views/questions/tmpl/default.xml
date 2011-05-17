@@ -15,6 +15,14 @@
 				>
 			 		<option value="0">JOPTION_SELECT_CATEGORY</option>
 				</field>
+				
+				<field name="tag" 
+					type="text"
+					extension="com_ask"
+					label="TAG"
+					class="inputbox"
+				/>
+				
 			</fieldset>
 		</fields>
 </metadata>

@@ -79,9 +79,15 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 			<h3><?php echo $answer->title; ?></h3>
 			<h5><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo $answer->name; ?> <?php echo JText::_("AT"); ?>  <?php echo JHtml::date($answer->submitted); ?></h5>
 			<p><?php echo $answer->text; ?></p>
-			<?php if ($this->isOwner && $answer->chosen != 1 ): ?>
+			
+			<?php if ($this->isOwner && $answer->chosen != 1 ): //Display "Choose" link ?>
 			<span class="choose_answer"><a href="<?php echo JRoute::_("index.php?option=com_ask&task=answer.choose&questionid=" . $this->question->id . "&answerid=" . $answer->id)?>"><?php echo JText::_("CHOOSE")?></a></span>
 			<?php endif;?>
+			
+			<?php if ($this->isOwner && $answer->chosen): //Display "Unchoose" link ?>
+			<span class="choose_answer"><a href="<?php echo JRoute::_("index.php?option=com_ask&task=answer.chooseReset&questionid=" . $this->question->id . "&answerid=" . $answer->id)?>"><?php echo JText::_("UNCHOOSE")?></a></span>
+			<?php endif;?>
+			
 		</div>
 		<?php endforeach;?>
 	<?php endif;?>

@@ -30,6 +30,7 @@ class AskModelQuestions extends JModelList {
 		//If there are answers, associate them with their questions
 		if ( $this->getState("filter.answers" , 0) ) {
 			//seperate questions from answers
+			//quit if no rows exist..
 			foreach ($rows as $row){
 				if ($row->question){
 					$questions[] = $row;
@@ -122,6 +123,13 @@ class AskModelQuestions extends JModelList {
 				$where = "a.catid='$catid'";
 		}
 		
+		$tag = $this->getState("filter.tag" , 0 );
+		
+		if ($tag)
+			if ($where)
+				$where .= " AND a.tags LIKE '%\"$tag\"%'";
+			else $where = "a.tags LIKE '$like'";
+		
 		if ($where) { $query->where( $where ); }
 		
 		$ordering = $this->getState( "list.ordering" , "submitted" );
@@ -130,7 +138,7 @@ class AskModelQuestions extends JModelList {
 		$query->order("$ordering $direction");
 
 		$logger->info( "SQL Query: " . $query);
-
+		
 		return $query;
 	}
 
@@ -172,6 +180,10 @@ class AskModelQuestions extends JModelList {
 		//category view
 		$catid = JRequest::getInt('catid' , 0);
 		$this->setState("filter.catid", $catid);
+		
+		//tag view
+		$tag = JRequest::getString("tag" , 0);
+		$this->setState("filter.tag" , $tag);
 
 		$logger->info("filter.unpublished: " . $view_unpublished );
 		$logger->info("filter.answers: " . $viewanswers );

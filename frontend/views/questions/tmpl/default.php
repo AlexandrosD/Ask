@@ -16,9 +16,17 @@ defined('_JEXEC') or die('Restricted access');
 <h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
 	<?php 
-	if ($this->categoryView): //Display Category Name with the title
-		echo " - " . $this->questions[0]->CategoryName;
+	
+	//Display Category Name with the title
+	if ($this->categoryView):
+		echo JText::_("LBL_HEAD_CATEGORY") . $this->questions[0]->CategoryName;
 	endif;
+	
+	//Display Tag with the title
+	if ($this->tag):
+		echo JText::_("LBL_HEAD_TAG") . $this->tag;
+	endif;
+	
 	?>
 </h1>
 <?php endif; ?>
@@ -40,13 +48,23 @@ defined('_JEXEC') or die('Restricted access');
 				<img class="ask_grvatar_small" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($question->email))); ?>?s=34" style="float:right; border:2px solid #333;" />
 				
 				<div class="question_data">			
-					<h2 class="question_title"><a href="<?php echo $question->link; ?>"><?php echo $question->title; ?></a></h2>
-					<h4><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($question->userid_creator ? JFactory::getUser($question->userid_creator)->name : $question->name ); ?> <?php echo JText::_("AT")?> <?php echo JHtml::date($question->submitted); ?>. <?php echo JText::_("CATEGORY"); ?>: <a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $question->catid); ?>"><?php echo $question->CategoryName; ?></a></h4>
-				</div>
-				
-				<div class="question_tags">
+					<h2 class="question_title">
+						<a href="<?php echo $question->link; ?>"><?php echo $question->title; ?></a>
+					</h2>
+					<h4 class="category">
+						<?php if ($question->catid): //if category?>
+							<a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&catid=" . $question->catid); ?>">
+								<?php echo $question->CategoryName; ?>
+							</a>
+						<?php endif; //endif category?>
+					</h4>
+					
+					<h4 class="data"><?php echo JText::_("SUBMITTED_BY"); ?> <?php echo ($question->userid_creator ? JFactory::getUser($question->userid_creator)->name : $question->name ); ?> <?php echo JText::_("ON_DATE")?> <?php echo JHtml::date($question->submitted); ?>.</h4>
+					
+					<span class="tags">
 					<?php 
 					if ($question->tags):
+						echo JText::_("TAGS") . ": ";
 						foreach ($question->tags as $tag):
 						?>
 						<a href="<?php echo JRoute::_("index.php?option=com_ask&view=questions&tag=" . $tag); ?>"><?php echo $tag ?></a>
@@ -54,7 +72,9 @@ defined('_JEXEC') or die('Restricted access');
 						endforeach;
 					endif;
 					?>
+				</span>
 				</div>
+				
 			</div>
 			
 		</div>

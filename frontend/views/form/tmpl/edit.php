@@ -48,6 +48,11 @@ JHtml::_('behavior.formvalidation');
 		<?php echo $this->form->getInput("catid");?>
 	</div>
 	
+	<div class="formelm">
+		<?php echo $this->form->getLabel("tags");?>
+		<?php echo $this->form->getInput("tags");?>
+	</div>
+	
 	<div style="display:none;">
 		<label for="LastName">You should normally cannot see this field. If you are, please leave it empty.</label>
 		<input id="LastName" name="LastName" type="text" />

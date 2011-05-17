@@ -22,6 +22,9 @@ class AskControllerAnswer extends JController
 	}
 	
 	public function save(){
+		//CSRF Anti-spoofing
+		JRequest::checkToken() or die( 'Invalid Token' );
+		
 		global $logger;
 		$logger->info("Saving Answer..");
 		
@@ -84,7 +87,6 @@ class AskControllerAnswer extends JController
 
         $data = new stdClass;
 
-        
         $data->id = NULL;
         $data->title = $title;
         $data->text = $text;
@@ -149,6 +151,30 @@ class AskControllerAnswer extends JController
 			$msg = JText::_("ANSWER_CHOOSE_OK");
 		else
 			$msg = JText::_("ANSWER_CHOOSE_NOK") . $err;
+		
+		$this->setRedirect( JRoute::_("index.php?option=com_ask&view=question&id=$qid") , $msg);
+	}
+	
+	public function chooseReset(){
+		$ok = FALSE;
+		
+		//IDs..
+		$qid = JRequest::getInt("questionid");
+		$aid = JRequest::getInt("answerid");
+		
+		$q = "UPDATE #__ask SET chosen=0 WHERE parent=$qid";
+		$db = JFactory::getDbo();
+		$db->setQuery($q);
+		
+		if ($db->query())
+			$ok = TRUE;
+		else 
+			$err = " - " . $db->getErrorMsg();
+			
+		if ($ok)
+			$msg = JText::_("ANSWER_CHOOSERESET_OK");
+		else
+			$msg = JText::_("ANSWER_CHOOSERESET_NOK") . $err;
 		
 		$this->setRedirect( JRoute::_("index.php?option=com_ask&view=question&id=$qid") , $msg);
 	}

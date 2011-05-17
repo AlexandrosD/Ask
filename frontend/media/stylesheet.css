@@ -50,6 +50,10 @@ div.boxes {
 	max-width: 30% !important;
 }
 
+div.question_data {
+	width: 60%; 
+}
+
 div.boxes span.votes,
 div.boxes span.answers,
 div.boxes span.impressions {
@@ -97,6 +101,22 @@ span.choose_answer {
 	display: inline-block;
 }
 
-div.question_tags {
-	display: inline-block;	
+span.tags {
+	display: inline-block;
+	float: right;
+	clear: both;
+}
+
+div.question_body h2.question_title{
+	float: left;
+}
+
+div.question_body h4.category{
+	float: right;
+}
+
+div.question_body h4.data {
+	float: left;
+	clear: both;
+	font-weight: normal !important;
 }

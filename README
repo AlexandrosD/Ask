@@ -11,21 +11,37 @@ Features:
 * FACEBOOK Integration ( Like & Share buttons)
 * Categories support
 * Vote answers
-* Choose best answer
+* Choose / unChoose best answer
 * Transparent Captcha for frontend submissions
+* CSRF Anti-spoofing
+* Tags for questions
 
 Things to come:
-* Tags for questions [under developement now]
 * Custom Code support (i.e for utilizing social plugins)
 * Default publishing state options & misc configurations
-* Filtering/sorting options (Frontend)
+* Filtering options (Frontend)
+	- Display not answered questions
+	- Display answered questions
+	- Resolved (with chosen answer)
+	- Unresolved (without chosen answer)
+* Sorting options (DESC / ASC)
+	- hits 
+	- number of answers
+	- score
+	- number of votes
 
-* Modules
+MODULES:
+* Questions (filtering functionality as for component)
+* Answers (filtering functionality as for questions)
+* Categories
+* Tags
 
-TODOs:
+PLUGINS:
+* Integrate with Joomla's search functionality
+
+TODO:
 * Improve Backend submenu detection code
-* Frontend validation on question submission
-* Add CSRF anti-spoofing to forms (http://docs.joomla.org/How_to_add_CSRF_anti-spoofing_to_forms)
+* Validate submissions
 
 The project's files are hosted in github: 
 URL: https://github.com/alexd3499/Ask
