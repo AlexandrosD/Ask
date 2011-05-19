@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form>
+<form
+	addrulepath="/administrator/components/com_ask/models/rules"
+>
 	<fieldset>
 		<field name="id" type="hidden" />
 		<field
@@ -8,6 +10,8 @@
 			label="FRM_Q_TITLE"
 			size="40"
 			class="inputbox"
+			validate="title"
+			required="true"
 			default=""
 		/>
 		<field
@@ -16,6 +20,7 @@
 			label="FRM_Q_TEXT"
 			rows="10"
 			class="inputbox"
+			required="true"
 			default=""
 		/>
 		<field
@@ -114,6 +119,8 @@
 			type="text"
 			label="FRM_Q_EMAIL"
 			class="inputbox"
+			required="true"
+			validate="email"
 			size="40"
 		/>
 		
@@ -122,9 +129,10 @@
 			type="category"
 			extension="com_ask"
 			class="inputbox"
+			required="true"
+			validate="category"
 			default=""
 			label="FRM_Q_CATID"
-			required="true"
 		>
 			 <option value="0">JOPTION_SELECT_CATEGORY</option>
 		</field>

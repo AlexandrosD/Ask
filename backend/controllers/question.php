@@ -48,12 +48,14 @@ class AskControllerQuestion extends JControllerForm
 			JRequest::setVar("jform" , $data);
 		}
 		
-		parent::save();
+		if (parent::save()) {
+			$msg = JText::_("MSG_ITEM_SAVED");
+			$url = "index.php?option=com_ask&view=questions&answers=" . $displayAnswers;
+			$this->setRedirect($url , $msg);
+		}		
 		
-		$this->setRedirect("index.php?option=com_ask&view=questions&answers=" . $displayAnswers,JText::_("MSG_ITEM_SAVED"));
 	}
 	public function edit() {
-		//TODO: Validate
 		global $logger;
 		
 		if (!AskHelper::canDo("core.edit")){

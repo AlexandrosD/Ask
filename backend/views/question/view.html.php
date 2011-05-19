@@ -34,24 +34,27 @@ class AskViewQuestion extends JView
 		$this->form = $form;
 		$this->item = $item;
 		
-		//Hide the category field for answers - inherit question's category
+		//Hide the category, tags field for answers - inherit question's category
 		if (!$this->form->getValue("question")) {
 			$this->form->setFieldAttribute("catid", "type", "hidden");
+			$this->form->setFieldAttribute("tags", "type", "hidden");
 		}
 		
 		$this->addToolBar();
 		
 		$logger->info ("AskViewQuestion, calling parent::display()");
 		parent::display($tpl);
+		
 	}
 	
-	public function addToolBar(){
+	//public function addToolBar(){ //Changed to protected. TODO Test
+	protected function addToolBar(){
 		global $logger;
 		$logger->info("AskViewQuestion::addToolBar");
 		$isNew = ($this->item->id == 0);
 		JToolBarHelper::title($isNew ? JText::_("NEW_QUESTION") : JText::_("EDIT_QUESTION"));
 		JToolBarHelper::save("question.save");
 		JToolBarHelper::cancel( "question.cancel" , $isNew ? "JTOOLBAR_CANCEL" : "JTOOLBAR_CLOSE" );
-	}
+	}	
 	
 }

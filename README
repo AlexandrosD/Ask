@@ -15,8 +15,10 @@ Features:
 * Transparent Captcha for frontend submissions
 * CSRF Anti-spoofing
 * Tags for questions
+* Submission validation
 
 Things to come:
+* RSS Feeds
 * Custom Code support (i.e for utilizing social plugins)
 * Default publishing state options & misc configurations
 * Filtering options (Frontend)
@@ -41,7 +43,6 @@ PLUGINS:
 
 TODO:
 * Improve Backend submenu detection code
-* Validate submissions
 
 The project's files are hosted in github: 
 URL: https://github.com/alexd3499/Ask

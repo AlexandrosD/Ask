@@ -72,6 +72,5 @@ abstract class AskHelper {
   			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
  		}
  		return $pageURL;
-	}
-	
+	}	
 }

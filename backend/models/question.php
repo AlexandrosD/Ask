@@ -41,13 +41,16 @@ class AskModelQuestion extends JModelAdmin {
 			$logger->warning("Form Object is NULL");
 			return FALSE;
 		}
-		
+				
 		//Fill the form with data
 		if ( $data = $this->loadFormData() ){
 			$logger->info("Filling the form with data..");
 			$logger->info("JSON DATA:" . json_encode($data));
 			
 			$user = JFactory::getUser();
+			
+			if (! $data instanceof JObject)
+				$data = JArrayHelper::toObject($data);
 			
 			if ( $data->userid_creator ){
 				//Existing Item..
@@ -98,7 +101,6 @@ class AskModelQuestion extends JModelAdmin {
 				
 			}
 			
-			
 			$logger->info("\n\n" . json_encode($data) . "\n\n");
 			$this->preprocessForm($form, $data);
 			$form->bind($data);
@@ -140,4 +142,5 @@ class AskModelQuestion extends JModelAdmin {
 		$logger->info ("AskModelQuestion::getItem()");
 		return parent::getItem();
 	}
+	
 }

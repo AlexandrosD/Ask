@@ -49,6 +49,9 @@ class AskModelForm extends JModelAdmin
 			
 			$user = JFactory::getUser();
 			
+			if (! $data instanceof JObject)
+				$data = JArrayHelper::toObject($data);
+			
 			if ( $data->userid_creator ){
 				//Existing Item..
 				//Fill in the apropriate information concerning the modifications
@@ -78,7 +81,12 @@ class AskModelForm extends JModelAdmin
 				$data->chosen = 0;
 				
 				//get email from user object
-				$data->email = $user->email;
+				if ($user->id)
+					$data->email = $user->email;
+				
+				//get user's name
+				if ($user->id)
+					$data->name = $user->name;
 				
 			}
 			
@@ -101,8 +109,11 @@ class AskModelForm extends JModelAdmin
 	protected function loadFormData() {
 		global $logger;
 		$logger->info("AskModelForm::loadFormData()");
-		
+
 		$data = JFactory::getApplication()->getUserState("com_ask.edit.question.data" , array() );
+		
+		//we got the data, clear state
+		JFactory::getApplication()->setUserState("com_ask.edit.question.data" , array() );
 		
 		if (empty($data)){
 			$logger->info("Data is empty.. Shall get the item instead..");

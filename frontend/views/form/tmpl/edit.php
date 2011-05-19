@@ -21,12 +21,11 @@ JHtml::_('behavior.formvalidation');
 
 <form action="<?php echo JRoute::_('index.php?option=com_ask&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 	
-	<?php if (!$this->user->id): ?>
+	
 	<div class="formelm">
 		<?php echo $this->form->getLabel("name");?>
 		<?php echo $this->form->getInput("name");?>
 	</div>
-	<?php endif; ?>
 	
 	<div class="formelm">
 		<?php echo $this->form->getLabel("email");?>

@@ -23,17 +23,20 @@ class AskViewForm extends JView
 		global $logger;
 		$logger->info("AskViewForm::display()");
 		
-		$this->item = $this->get("Item");
 		$this->form = $this->get("Form");
+		$this->item = $this->get("Item");
 		
 		$app = JFactory::getApplication();
 		$user = JFactory::getUser();
 		
 		//authorization
-		//TODO: update for edit own questions
 		if (!$user->authorize("core.create" , "com_ask")){
 			JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
 			return false;
+		}
+		
+		if ($user->id){
+			$this->form->setFieldAttribute("name", "type", "hidden");
 		}
 		
 		//params

@@ -26,8 +26,10 @@ class AskControllerForm extends JControllerForm {
 			JError::raiseError(404 , ""); 
 		}
 		
+		
+		$data = JRequest::getVar('jform', array(), 'post', 'array');	
+		
 		//Encode the tags to json..
-		$data = JRequest::getVar('jform', array(), 'post', 'array');
 		$tags = $data["tags"];
 		if ($tags){
 			$tags = explode("," , $tags);
@@ -43,16 +45,23 @@ class AskControllerForm extends JControllerForm {
 			JRequest::setVar("jform" , $data);
 		}		
 		
-		parent::save();
-		
-		$db = &JFactory::getDbo();
-		
-		//redirect to t
-		$this->setRedirect(JRoute::_("index.php?option=com_ask&view=question&id=") . $db->insertid());
+		if (parent::save()){
+			$db = &JFactory::getDbo();
+			//redirect & display the inserted data
+			$this->setRedirect(JRoute::_("index.php?option=com_ask&view=question&id=") . $db->insertid());
+			//clear state
+			JFactory::getApplication()->setUserState("com_ask.edit.question.data", array());
+		}
+		else {
+			//store temp data
+			JFactory::getApplication()->setUserState("com_ask.edit.question.data", $data);
+		}
 	}
 	
 	public function cancel(){
 		echo "<script type='text/javascript'>javascript:history.go(-2);</script>";
+		//clear state
+		JFactory::getApplication()->setUserState("com_ask.edit.question.data", array());
 	}
 	
 }

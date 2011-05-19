@@ -34,9 +34,8 @@ class AskControllerAnswer extends JController
 			JError::raiseError(404 , ""); 
 		}
 		
-	 $title = JRequest::getString("title");
+	 	$title = JRequest::getString("title");
         //static method getString clean variable htmlspecialchars() not required (xss cleanup) see request.php line 248
-        
         
         $text = JRequest::getString("text");
 
@@ -74,6 +73,12 @@ class AskControllerAnswer extends JController
             $valid = FALSE;
             $msg.="<br />" . JText::_("ERR_ANSWER_NOTITLE");
         }
+        
+        $mailregex = '/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})$/';
+		if (! preg_match($mailregex, $email) ) {
+            $valid = FALSE;
+            $msg.="<br />" . JText::_("ERR_ANSWER_INCORRECTMAIL");
+        }
 
         if (!$valid) {
             $return = JRoute::_("index.php?option=com_ask&view=question&name=$name&title=$title&text=$text&id=" . $parent);
@@ -82,8 +87,6 @@ class AskControllerAnswer extends JController
         }
 
         $db = JFactory::getDBO();
-
-
 
         $data = new stdClass;
 
@@ -106,8 +109,6 @@ class AskControllerAnswer extends JController
         $data->email = $email;
         $data->catId = $catid;
         
-        
-
         if ($db->insertObject('#__ask', $data)) {
             $message = JText::_("MSG_ANSW_SAVED");
             $type = NULL;
