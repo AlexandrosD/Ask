@@ -23,6 +23,7 @@ class AskViewQuestions extends JView
             
         	$this->questions = $this->get("Items");
         	$this->pagination = $this->get("Pagination");
+        	$this->document = JFactory::getDocument();
         	
         	//Category View
         	$this->categoryView = FALSE; //Initialization
@@ -44,12 +45,20 @@ class AskViewQuestions extends JView
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
         	       
         	if ( @$this->questions ){ //check for questions, suppressing errors..
-	        	//$logger->info ( json_encode($this->questions) );
+	        	
+	        	// Add feed links
+				$link = '&format=feed&limitstart=';
+				$attribs = array('type' => 'application/rss+xml', 'title' => 'RSS 2.0');
+				$this->document->addHeadLink(JRoute::_($link . '&type=rss'), 'alternate', 'rel', $attribs);
+				$attribs = array('type' => 'application/atom+xml', 'title' => 'Atom 1.0');
+				$this->document->addHeadLink(JRoute::_($link . '&type=atom'), 'alternate', 'rel', $attribs);
+        		
 	        	parent::display($tpl);
         	}
         	else{
         		$logger->error("No Results..");
         		JError::raiseNotice(404, JText::_("ERROR_404"));
         	}
+        	
         }
 }
