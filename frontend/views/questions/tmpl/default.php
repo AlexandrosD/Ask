@@ -31,6 +31,8 @@ defined('_JEXEC') or die('Restricted access');
 </h1>
 <?php endif; ?>
 
+<?php echo $this->getFilteringOptions(); ?>
+
 <div class="questions<?php echo $this->pageclass_sfx; ?>">
 
 	<?php foreach($this->questions as $question): ?>

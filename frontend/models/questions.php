@@ -114,8 +114,13 @@ class AskModelQuestions extends JModelList {
 		if (!$show_answers && !$show_unpublished) { $where = "a.published=1 AND a.question=1"; }
 		if ($show_answers && $show_unpublished) { $where = NULL; }
 		
-		$catid = $this->getState("filter.catid" , 0);
 		
+		
+		
+		//************* FILTERING - BEGIN ***************
+		
+		//categories - filter.catid
+		$catid = $this->getState("filter.catid" , 0);
 		if ($catid){
 			if ($where)
 				$where .= " AND a.catid='$catid'";
@@ -123,13 +128,64 @@ class AskModelQuestions extends JModelList {
 				$where = "a.catid='$catid'";
 		}
 		
+		//tags - filter.tag
 		$tag = $this->getState("filter.tag" , 0 );
-		
 		if ($tag)
 			if ($where)
 				$where .= " AND a.tags LIKE '%\"$tag\"%'";
 			else $where = "a.tags LIKE '$like'";
+			
+		//answered questions - filter.answered
+		$answered = $this->getState("filter.answered" , 0);
+		if ($answered){
+			
+			$q = "a.id IN (SELECT parent FROM #__ask WHERE question=0)";
+			
+			if ($where)
+				$where .= " AND " . $q;
+			else 
+				$where = $q;
+		}
 		
+		//not answered questions - filter.notanswered
+		$notanswered = $this->getState("filter.notanswered" , 0);
+		if ($notanswered){
+			
+			$q = "a.id NOT IN (SELECT parent FROM #__ask WHERE question=0) AND a.question=1";
+			
+			if ($where)
+				$where .= " AND " . $q;
+			else 
+				$where = $q;
+		}
+		
+		//resolved question - filter.resolved
+		$resolved = $this->getState("filter.resolved" , 0);
+		if ($resolved){
+			
+			$q = "a.id in (SELECT parent from #__ask where question=0 and chosen=1)";
+			
+			if ($where)
+				$where .= " AND " . $q;
+			else 
+				$where = $q;
+		}
+		
+		//unresolved questions - filter.unresolved
+		$unresolved = $this->getState("filter.unresolved" , 0);
+		if ($unresolved){
+			
+			$q = "a.id in (select parent from #__ask where question=0 and chosen=0) and a.id not in (SELECT parent from #__ask where question=0 and chosen=1)";
+			
+			if ($where)
+				$where .= " AND " . $q;
+			else 
+				$where = $q;
+		}
+			
+		//************* FILTERING - END ***************
+		
+		//apply filters
 		if ($where) { $query->where( $where ); }
 		
 		$ordering = $this->getState( "list.ordering" , "submitted" );
@@ -177,13 +233,29 @@ class AskModelQuestions extends JModelList {
 		$this->setState("filter.unpublished" , $view_unpublished );
 		$this->setState("filter.answers" , $viewanswers);
 		
-		//category view
+		//************* FILTERING - BEGIN ***************
+		
+		//category
 		$catid = JRequest::getInt('catid' , 0);
 		$this->setState("filter.catid", $catid);
 		
-		//tag view
+		//tag
 		$tag = JRequest::getString("tag" , 0);
 		$this->setState("filter.tag" , $tag);
+		
+		//answered
+		$this->setState("filter.answered" , JRequest::getInt("answered" , 0));
+		
+		//not answered
+		$this->setState("filter.notanswered" , JRequest::getInt("notanswered" , 0));
+		
+		//resolved
+		$this->setState("filter.resolved" , JRequest::getInt("resolved" , 0));
+		
+		//unresolved
+		$this->setState("filter.unresolved" , JRequest::getInt("unresolved" , 0));
+		
+		//************* FILTERING - END ***************
 
 		$logger->info("filter.unpublished: " . $view_unpublished );
 		$logger->info("filter.answers: " . $viewanswers );

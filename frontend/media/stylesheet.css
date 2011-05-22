@@ -120,3 +120,25 @@ div.question_body h4.data {
 	clear: both;
 	font-weight: normal !important;
 }
+
+div.questions_filters {
+	float: left;
+	clear: both;
+	width: 100%;
+	border: 1px solid #ccc;
+	margin-bottom: 5px;
+	background: #eeeeee;
+}
+
+div.questions_filters ul li{
+	list-style: none;	
+	display: inline-block;
+}
+
+div.questions_filters ul li a {
+	margin: 10px;
+}
+
+div.questions_filters ul li a.active {
+	font-weight: bold;
+}

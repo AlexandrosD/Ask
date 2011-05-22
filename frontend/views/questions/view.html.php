@@ -61,4 +61,29 @@ class AskViewQuestions extends JView
         	}
         	
         }
+        
+        function getFilteringOptions(){
+        	
+        	$currentOptions = "&tag=" . JRequest::getString("tag") . "&catid=" . JRequest::getInt("catid");
+        	
+        	$answered = 
+        		"<li><a " . (JRequest::getInt("answered" , 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&answered=1" . $currentOptions)  . "'>" . JText::_("FILTER_ANSWERED") . "</a></li>";
+        	
+        	$notanswered = 
+        		"<li><a " . (JRequest::getInt("notanswered" , 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&notanswered=1" . $currentOptions)  . "'>" . JText::_("FILTER_NOTANSWERED") . "</a></li>";
+        	
+        	$resolved = 
+        		"<li><a " . (JRequest::getInt("resolved" , 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&resolved=1" . $currentOptions)  . "'>" . JText::_("FILTER_RESOLVED") . "</a></li>";
+        	
+        	$unresolved = 
+        		"<li><a " . (JRequest::getInt("unresolved", 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&unresolved=1" . $currentOptions)  . "'>" . JText::_("FILTER_UNRESOLVED") . "</a></li>";
+        	
+        	$options = "<div class='questions_filters'><ul>" . $answered . $notanswered . $resolved . $unresolved . "</ul></div>";
+        	
+        	return $options;
+        }
+        
+        function getSortingOptions(){
+        	
+        }
 }

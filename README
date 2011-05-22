@@ -16,16 +16,17 @@ Features:
 * CSRF Anti-spoofing
 * Tags for questions
 * Submission validation
-
-Things to come:
-* RSS Feeds
-* Custom Code support (i.e for utilizing social plugins)
-* Default publishing state options & misc configurations
+* RSS & Atom Feeds
 * Filtering options (Frontend)
 	- Display not answered questions
 	- Display answered questions
 	- Resolved (with chosen answer)
 	- Unresolved (without chosen answer)
+
+Things to come:
+* Custom Code support (i.e for utilizing social plugins)
+* Default publishing state options & misc configurations
+* Notify selected users for new additions (per category)
 * Sorting options (DESC / ASC)
 	- hits 
 	- number of answers
@@ -43,6 +44,7 @@ PLUGINS:
 
 TODO:
 * Improve Backend submenu detection code
+* ROUTING
 
 The project's files are hosted in github: 
 URL: https://github.com/alexd3499/Ask
