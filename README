@@ -43,6 +43,7 @@ PLUGINS:
 * Integrate with Joomla's search functionality
 
 TODO:
+* Filtering / Ordering / Misc View options as menu item options
 * Improve Backend submenu detection code
 * ROUTING
 

@@ -256,6 +256,16 @@ class AskModelQuestions extends JModelList {
 		$this->setState("filter.unresolved" , JRequest::getInt("unresolved" , 0));
 		
 		//************* FILTERING - END ***************
+		
+		//************* ORDERING - START ***************
+		
+		$ordering = JRequest::getString("list.direction" , "submitted");
+		$direction = JRequest::getString("list.direction" , "DESC");
+		
+		$this->setState("list.ordering" , $ordering);
+		$this->setState("list.direction" , $direction);
+		
+		//************* ORDERING - END ***************
 
 		$logger->info("filter.unpublished: " . $view_unpublished );
 		$logger->info("filter.answers: " . $viewanswers );
