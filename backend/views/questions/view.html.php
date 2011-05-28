@@ -25,6 +25,8 @@ class AskViewQuestions extends JView
 			
 			$this->addToolBar();
 			
+			$this->viewAnswers = JRequest::getInt("answers",0);
+			
 			//Calculate parents..
 			foreach ($this->items as $item){
 				$parent = NULL;

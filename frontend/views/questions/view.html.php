@@ -23,7 +23,11 @@ class AskViewQuestions extends JView
             
         	$this->questions = $this->get("Items");
         	$this->pagination = $this->get("Pagination");
+        	
         	$this->document = JFactory::getDocument();
+        	
+        	$this->filteringOptions = $this->get("filteringOptions");
+        	$this->sortingOptions = $this->get("sortingOptions");
         	
         	//Category View
         	$this->categoryView = FALSE; //Initialization
@@ -43,6 +47,11 @@ class AskViewQuestions extends JView
         	$params = $app->getParams();
         	$this->assignRef("params", $params);
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
+        	
+        	//view options
+        	$this->viewStats = JRequest::getInt("display_stats");
+        	$this->viewFilteringOptions = JRequest::getInt("display_filters");
+        	$this->viewGravatars = JRequest::getInt("display_gravatars");
         	       
         	if ( @$this->questions ){ //check for questions, suppressing errors..
 	        	
@@ -59,31 +68,6 @@ class AskViewQuestions extends JView
         		$logger->error("No Results..");
         		JError::raiseNotice(404, JText::_("ERROR_404"));
         	}
-        	
-        }
-        
-        function getFilteringOptions(){
-        	
-        	$currentOptions = "&tag=" . JRequest::getString("tag") . "&catid=" . JRequest::getInt("catid");
-        	
-        	$answered = 
-        		"<li><a " . (JRequest::getInt("answered" , 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&answered=1" . $currentOptions)  . "'>" . JText::_("FILTER_ANSWERED") . "</a></li>";
-        	
-        	$notanswered = 
-        		"<li><a " . (JRequest::getInt("notanswered" , 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&notanswered=1" . $currentOptions)  . "'>" . JText::_("FILTER_NOTANSWERED") . "</a></li>";
-        	
-        	$resolved = 
-        		"<li><a " . (JRequest::getInt("resolved" , 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&resolved=1" . $currentOptions)  . "'>" . JText::_("FILTER_RESOLVED") . "</a></li>";
-        	
-        	$unresolved = 
-        		"<li><a " . (JRequest::getInt("unresolved", 0)?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&unresolved=1" . $currentOptions)  . "'>" . JText::_("FILTER_UNRESOLVED") . "</a></li>";
-        	
-        	$options = "<div class='questions_filters'><ul>" . $answered . $notanswered . $resolved . $unresolved . "</ul></div>";
-        	
-        	return $options;
-        }
-        
-        function getSortingOptions(){
         	
         }
 }

@@ -17,21 +17,31 @@ Features:
 * Tags for questions
 * Submission validation
 * RSS & Atom Feeds
+* Misc View options as menu item options
 * Filtering options (Frontend)
 	- Display not answered questions
 	- Display answered questions
 	- Resolved (with chosen answer)
 	- Unresolved (without chosen answer)
-
-Things to come:
-* Custom Code support (i.e for utilizing social plugins)
-* Default publishing state options & misc configurations
-* Notify selected users for new additions (per category)
-* Sorting options (DESC / ASC)
+* Sorting options (DESC / ASC) (Frontend)
 	- hits 
 	- number of answers
 	- score
 	- number of votes
+	- Submission Date
+	
+Things to come:
+v1.0.0:
+* Default publishing state options & misc configurations
+* Custom Code support (i.e for utilizing social plugins)
+* Improve Backend submenu detection code
+* BREADCRUMBS
+* ROUTING
+
+v2.0.0:
+* Notify selected users for new additions (per category)
+* Frontend Editing of already submitted questions
+* Filtering & Sorting options for backend
 
 MODULES:
 * Questions (filtering functionality as for component)
@@ -42,22 +52,20 @@ MODULES:
 PLUGINS:
 * Integrate with Joomla's search functionality
 
-TODO:
-* Filtering / Ordering / Misc View options as menu item options
-* Improve Backend submenu detection code
-* ROUTING
 
+-------------------------------------------------------------
 The project's files are hosted in github: 
 URL: https://github.com/alexd3499/Ask
 GIT: git://github.com/alexd3499/Ask.git
 
 Issue Tracker at: 
 https://github.com/alexd3499/Ask/issues
+-------------------------------------------------------------
 
 Note that first priority after installing is to configure ACL according to your needs. By default, unregistered users are neither allowed to display aswers to questions, nor to submit them.
 
 -------------------------------------------------------------
-|		VERSION HISTORY ( Current is v0.6.3 )				|
+VERSION HISTORY ( Current Version: v0.6.3 )
 -------------------------------------------------------------
 25/03/2011 - [FEATURE] [v0.6.1] Added IP Logging Functionality
 26/03/2011 - [FEATURE] [v0.6.1] GRAVATAR support
@@ -65,6 +73,9 @@ Note that first priority after installing is to configure ACL according to your 
 27/03/2011 - [FEATURE] [v0.6.1] Changes in the shell script that creates the package file
 08/04/2011 - [FIX] [v0.6.2] Fixed update bug
 01/05/2011 - [FIX] [v0.6.3] Fixed installation bug
-09/05/2011 - [FEATURE] [v0.6.4] Voting functionallity
-10/05/2011 - [FEATURE] [v0.6.5] Answer Choosing functionallity
+08/05/2011 - [FIX] [v0.6.3] Fixed answer submission bug
+09/05/2011 - [FEATURE] [v1.0.0] Voting functionallity
+10/05/2011 - [FEATURE] [v1.0.0] Answer Choosing functionallity
 16/05/2011 - [FEATURE] [v1.0.0] Tags
+16/05/2011 - [FEATURE] [v1.0.0] Filtering & Sorting Options
+16/05/2011 - [FEATURE] [v1.0.0] Submission Validations

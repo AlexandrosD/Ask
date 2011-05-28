@@ -23,23 +23,36 @@ JHtml::_('behavior.tooltip');
         		<th width="10">&nbsp;</th>                     
         		<th><?php echo JText::_("TBL_TITLE")?></th>
         		<th><?php echo JText::_("TBL_PUBLISHED")?></th>
-        		<th><?php echo JText::_("TBL_TYPE")?></th>
+        		<?php if ($this->viewAnswers):?>
         		<th><?php echo JText::_("TBL_PARENT")?></th>
+        		
+        		<?php else: ?>
         		<th><?php echo JText::_("TBL_ANSWER")?></th>
-        		<th><?php echo JText::_("TBL_CATEGORY")?></th>
+        		
         		<th><?php echo JText::_("TBL_TAGS")?></th>
+        		
+        		<th><?php echo JText::_("TBL_CATEGORY")?></th>
+        		<th><?php echo JText::_("TBL_ANSWERS")?></th>
+        		<?php endif; ?>
+        		
+        		
+        		<th><?php echo JText::_("TBL_VOTES")?></th>
+        		<th><?php echo JText::_("TBL_SCORE")?></th>
+        		
         		<th><?php echo JText::_("TBL_SUBMITTED")?></th>
         		<th><?php echo JText::_("TBL_MODIFIED")?></th>
         		<th><?php echo JText::_("TBL_SUBMITTED_BY")?></th>
         		<th><?php echo JText::_("TBL_MODIFIED_BY")?></th>
+        		<?php if (!$this->viewAnswers):?>
         		<th><?php echo JText::_("TBL_IMPRESSIONS")?></th>
+        		<?php endif; ?>
         		<th>IP</th>
 			</tr>
 		</thead>
             
         <tfoot>
     	  	<tr>
-        		<td colspan="16"><?php echo $this->pagination->getListFooter(); ?></td>
+        		<td colspan="17"><?php echo $this->pagination->getListFooter(); ?></td>
 			</tr>
 		</tfoot>
            	
@@ -58,9 +71,7 @@ JHtml::_('behavior.tooltip');
 	                <td class="center">
 	                	<?php echo JHtml::_('jgrid.published', $item->published, $i , "questions."); ?>
 	                </td>
-	                <td class="center">
-	                	<?php if ($item->question){echo JText::_("QUESTION"); } else { echo JText::_("ANSWER"); } ?>
-	                </td>
+	                <?php if ($this->viewAnswers):?>
 	                <td>
 	                	<?php 
 	                		if ($item->parentData){
@@ -73,6 +84,7 @@ JHtml::_('behavior.tooltip');
 	                		}
 	                	?>
 	                </td>
+	                <?php else: ?>
 	                <td>
 	                	<?php if ($item->question):?>
 	                		<a href="<?php echo JRoute::_('index.php?option=com_ask&task=question.edit&question=0&parent=' . $item->id . '&catid=' . $item->catid ); ?>">Answer</a>
@@ -81,14 +93,26 @@ JHtml::_('behavior.tooltip');
 	                	<?php endif; ?>
 	                </td>
 	                <td class="center">
-	                	<?php echo ($item->CategoryName); ?>
-	                </td>
-	                <td class="center">
 	                	<?php 
 	                	if ($item->tags)
 	                		foreach ($item->tags as $tag)
 	                			echo $tag . " "
 	                	?>
+	                </td>
+	                <td class="center">
+	                	<?php echo ($item->CategoryName); ?>
+	                </td>
+	                <td>
+	                	<?php echo $item->answerscount; ?>
+	                </td>
+	                <?php endif; ?>
+	                
+	                
+	                <td>
+	                	<?php echo $item->votes; ?>
+	                </td>
+	                <td>
+	                	<?php echo $item->score; ?>
 	                </td>
 	                <td class="center">
 	                	<?php echo $item->submitted; ?>
@@ -106,9 +130,11 @@ JHtml::_('behavior.tooltip');
 	                	}
 	                	?>
 	                </td>
+	                <?php if (!$this->viewAnswers):?>
 	                <td class="center">
 	                	<?php echo $item->impressions; ?>
 	                </td>
+	                <?php endif; ?>
 	                <td class="center">
 	                	<?php echo $item->ip; ?>
 	                </td>

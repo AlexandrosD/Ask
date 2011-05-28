@@ -53,7 +53,7 @@ class AskModelQuestions extends JModelList
                 // Create a new query object.         
                 $db = JFactory::getDBO();
                 $query = $db->getQuery(true);
-                $query->select('a.*, c.title AS CategoryName');
+                $query->select('a.*, a.votes_possitive-a.votes_negative as score, a.votes_possitive+a.votes_negative as votes, (SELECT COUNT(*) FROM #__ask AS b WHERE b.parent=a.id) as answerscount, c.title AS CategoryName');
                 $query->from('#__ask AS a');
                 $query->leftJoin('#__categories AS c ON a.catid=c.id');
                 $query->order($this->getState("list.ordering") . " " . $this->getState("list.direction"));

@@ -47,7 +47,6 @@ div.boxes {
 	padding-top: 8px;
 	margin-right: 5px;
 	width: 220px;
-	max-width: 30% !important;
 }
 
 div.question_data {
@@ -103,8 +102,7 @@ span.choose_answer {
 
 span.tags {
 	display: inline-block;
-	float: right;
-	clear: both;
+	float: left;
 }
 
 div.question_body h2.question_title{
@@ -112,7 +110,9 @@ div.question_body h2.question_title{
 }
 
 div.question_body h4.category{
-	float: right;
+	float: left;
+	clear: both;
+	margin-right: 10px;
 }
 
 div.question_body h4.data {
@@ -136,9 +136,16 @@ div.questions_filters ul li{
 }
 
 div.questions_filters ul li a {
-	margin: 10px;
+	padding: 5px;
+	float: left;
 }
 
 div.questions_filters ul li a.active {
 	font-weight: bold;
+}
+
+img.ask_gravatar_small {
+	float:left;
+	margin: 10px;
+	border:2px solid #333;
 }
