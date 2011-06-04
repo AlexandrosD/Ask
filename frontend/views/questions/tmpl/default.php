@@ -41,7 +41,7 @@ if ($this->viewFilteringOptions)
 <div class="questions<?php echo $this->pageclass_sfx; ?>">
 
 	<?php foreach($this->questions as $question): ?>
-		<div class="question">
+		<div class="question system-<?php echo ($question->published ? 'published' : 'unpublished');?>">
 			
 			<div class="question_body">
 				

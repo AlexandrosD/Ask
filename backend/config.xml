@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 
-
-
 	<fieldset name="permissions" label="Permissions" description="Permissions">
+	
+		<!-- ACL PERMISSIONS -->
 		<field
 			name="rules"
 			type="rules"
@@ -14,7 +14,44 @@
 			component="com_ask"
 			section="component" 
 		/>
-
+		
+	</fieldset>
+	
+	<fieldset name="configuration" label="Configuration" description="Configuration Options">
+	
+		<!-- DEFAULT QUESTION STATE -->
+		<field
+			name="defaultQuestionState"
+			label="CONFIG_DEFAULTQUESTIONSTATE"
+			type="list"
+			class="inputbox"
+		>
+			<option value="1">OPT_PUBLISHED</option>
+			<option value="0">OPT_UNPUBLISHED</option>
+		</field>
+		
+		<!-- DEFAULT ANSWER STATE -->
+		<field
+			name="defaultAnswerState"
+			label="CONFIG_DEFAULTANSWERSTATE"
+			type="list"
+			class="inputbox"
+		>
+			<option value="1">OPT_PUBLISHED</option>
+			<option value="0">OPT_UNPUBLISHED</option>
+		</field>
+		
+		<!-- USE OF COMPONENT'S DEFAULT CSS -->
+		<field
+			name="useDefaultCss"
+			label="CONFIG_USEDEFAULTCSS"
+			type="list"
+			class="inputbox"
+		>
+			<option value="1">OPT_YES</option>
+			<option value="0">OPT_NO</option>
+		</field>
+		
 	</fieldset>
 
 </config>

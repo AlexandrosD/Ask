@@ -62,7 +62,7 @@ class AskModelQuestion extends JModelItem {
 		}
 	
 		$question->answers = $this->getAnswers();
-		$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id );
+		$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id . AskHelper::getActiveViewOptions());
 		
 		foreach ($question->answers as $a){
 			if (!$a->name){
@@ -109,10 +109,16 @@ class AskModelQuestion extends JModelItem {
 		
 		$db = JFactory::getDbo();
 		
+		$userid = JFactory::getUser()->id;
+		
 		$query = $db->getQuery(TRUE);
 		$query->select("*");
 		$query->from("#__ask");
-		$query->where("parent=" . $this->id );
+		
+		//Users can view their asnwers even if they're not published
+		$where = "parent=" . $this->id . " AND (published=1 OR userid_creator=$userid)";
+		
+		$query->where($where);		
 		$query->order("chosen DESC, votes_possitive-votes_negative DESC, submitted DESC");
 		
 		$logger->info("SQL Query for answers: " . $query);
@@ -270,10 +276,6 @@ class AskModelQuestion extends JModelItem {
 			$logger->warning("Cannot vote for an empty question!");
 			return FALSE;
 		}
-	}
-	
-	private function store(){
-		global $logger;		
 	}
 	
 }

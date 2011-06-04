@@ -21,6 +21,9 @@ class AskViewQuestion extends JView
         {
         	global $logger;
             
+        	$user = JFactory::getUser();
+        	$app = JFactory::getApplication();
+        	
         	$this->question = $this->get("Item");
 
         	//Authorizations
@@ -29,15 +32,18 @@ class AskViewQuestion extends JView
         	$this->assignRef("submitanswers", $user->authorize("question.answer" , "com_ask"));
         	
         	//params
-        	$app = JFactory::getApplication();
         	$params = $app->getParams();
         	$this->assignRef("params", $params);
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
         	
-        	$user = JFactory::getUser();
+        	//check ownership
         	$isOwner = (bool)($user->id == $this->question->userid_creator && $user->id != 0 );
-        	$this->assignRef("isOwner", $isOwner);
-        	
+        	$this->assignRef("isOwner", $isOwner);  
+
+        	//Add Pathway
+        	AskHelper::addPathway(); 
+        	$pathway=$app->getPathway();
+        	$pathway->addItem ( $this->question->title );
         	
         	if ( @$this->question ){ //check for questions, suppressing errors..
 	        	//$logger->info ( json_encode($this->question) );

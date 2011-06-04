@@ -19,31 +19,6 @@ abstract class AskHelper {
 		JSubMenuHelper::addEntry(JText::_('CATEGORIES'), 'index.php?option=com_categories&view=categories&extension=com_ask', $submenu == 'categories');
 	}
 	
-	public static function getActions(){
-		/*
-		 *  $user  = JFactory::getUser();
-                $result = new JObject;
- 
-                if (empty($messageId)) {
-                        $assetName = 'com_ask';
-                }
-                else {
-                        $assetName = 'com_ask.message.'.(int) $messageId;
-                }
- 
-                $actions = array(
-                        'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.delete'
-                );
- 
-                foreach ($actions as $action) {
-                        $result->set($action, $user->authorize($action, $assetName));
-                }
- 
-                return $result;
-
-		 */
-	}
-	
 	public static function getActiveSubmenu(){
 		$option = JRequest::getVar("option");
 		if ( JRequest::getInt("answers" , 0) ){
@@ -62,7 +37,7 @@ abstract class AskHelper {
 		return $user->authorize($action , "com_ask");
 	}
 	
-	public function getCurrentPageURL(){
+	public static function getCurrentPageURL(){
 		$pageURL = 'http';
  		if (isset($_SERVER["HTTPS"]) &&  $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
  		$pageURL .= "://";
@@ -72,5 +47,78 @@ abstract class AskHelper {
   			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
  		}
  		return $pageURL;
-	}	
+	}
+
+	/**
+	 * Method to add a pathway to the current view
+	 *
+	 *	@param $viewObject: a reference to the current view object
+	 *
+	 */
+	public function addPathway(){
+		
+		$app = JFactory::getApplication();
+		$pathway = $app->getPathway();
+				
+		$viewOptions = AskHelper::getActiveViewOptions( TRUE );
+
+		//00. Generic
+		$pathway->addItem( JText::_("QUESTIONS") , JRoute::_("index.php?option=com_ask&view=questions") );
+       	
+		//01. Category
+       	if ($viewOptions->catid) {
+       		$pathway->addItem( JText::_("CATEGORIES") );
+       		$pathway->addItem(AskHelper::getCategoryName($viewOptions->catid) , JRoute::_("index.php?option=com_ask&view=questions&catid=" . $viewOptions->catid) );
+       	}
+		
+       	//02. Tag
+       	if ($viewOptions->tag){
+       		$pathway->addItem( JText::_("TAGS") );
+       		$pathway->addItem( $viewOptions->tag , JRoute::_("index.php?option=com_ask&view=questions&tag=" . $viewOptions->tag ) );  
+       	}
+       	
+        //03. Filter
+        if ($viewOptions->filter){
+        	$pathway->addItem( JText::_("FILTER_" .$viewOptions->filter ) );
+        }
+       	
+	}
+	
+	/**
+	 * Method to get the active vie options
+	 *
+	 *	@param bool $viewObject: 	if true, an object will be returned
+	 *								if false, query string vars will be returned
+	 *
+	 */
+	public static function getActiveViewOptions( $returnObject = FALSE ){
+		$viewOptions = new stdClass();
+		$viewOptions->filter = JRequest::getWord("filter");
+		$viewOptions->tag = JRequest::getWord("tag");
+		$viewOptions->catid = JRequest::getInt("catid");
+		
+		if ($returnObject){
+			return $viewOptions;
+		}
+		else {
+			return 	"&catid=" 	. $viewOptions->catid	. 
+				 	"&tag="		. $viewOptions->tag		.
+					"&filter="	. $viewOptions->filter	;
+		}
+	}
+	
+	public static function getCategoryName ( $catid ){
+		$db = JFactory::getDbo();
+		
+		$query = $db->getQuery(TRUE);
+		$query->select("cats.title");
+		$query->from("#__categories AS cats");
+		$query->where("cats.id=$catid");
+		
+		$db->setQuery($query);
+		$catname = $db->loadObject();
+		
+		return $catname->title;
+	}
+	
 }

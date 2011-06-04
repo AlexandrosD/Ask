@@ -18,6 +18,8 @@ Features:
 * Submission validation
 * RSS & Atom Feeds
 * Misc View options as menu item options
+* Default publishing state options & misc configurations
+* BREADCRUMBS
 * Filtering options (Frontend)
 	- Display not answered questions
 	- Display answered questions
@@ -31,26 +33,49 @@ Features:
 	- Submission Date
 	
 Things to come:
-v1.0.0:
-* Default publishing state options & misc configurations
-* Custom Code support (i.e for utilizing social plugins)
-* Improve Backend submenu detection code
-* BREADCRUMBS
+
+********************************************************************************
+-------------------
+PENDING FEATURES v1.0.0:
+-------------------
+
+TODO / TASKS:
 * ROUTING
+* AUTO UPDATE FUNCTIONALITY
+* Cleanup Obsolete Code
 
-v2.0.0:
-* Notify selected users for new additions (per category)
-* Frontend Editing of already submitted questions
-* Filtering & Sorting options for backend
-
-MODULES:
+IMPLEMENT MODULES:
 * Questions (filtering functionality as for component)
 * Answers (filtering functionality as for questions)
 * Categories
+
+MODULES:
 * Tags
 
 PLUGINS:
 * Integrate with Joomla's search functionality
+
+********************************************************************************
+-------------------
+FEATURES v2.0.0:
+-------------------
+* ReCAPTCHA support
+* Notify selected users for new additions (per category)
+* Frontend Editing of already submitted questions (published or not)
+* Filtering & Sorting options for backend
+* Users to be able to see their submitted questions even if they are not published
+* Custom Code support (i.e for utilizing social plugins)
+* Integration with Joomla's ACL 'Debug Permission Report' action
+
+
+MODULES:
+* Tag Cloud
+
+TODO / TASKS:
+* RW the component... Answers and Questions shall be separate model classes
+* Improve Backend submenu detection code
+* Code Optimization
+********************************************************************************
 
 
 -------------------------------------------------------------

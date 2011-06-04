@@ -69,7 +69,7 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 		<!-- ANSWERS -->
 		<a name="answers">&nbsp;</a>
 		<?php foreach ($this->question->answers as $answer):?>
-		<div class="answer<?php if ($answer->chosen){ echo " chosen"; }?>" style="padding-bottom:3px; margin-bottom:3px; border-bottom: 1px solid #ccc;">
+		<div class="answer<?php if ($answer->chosen){ echo " chosen"; }?> system-<?php echo ($answer->published ? 'published' : 'unpublished');?>" style="padding-bottom:3px; margin-bottom:3px; border-bottom: 1px solid #ccc;">
 			<div class="votebox">
 				<a class="possitive" href="<?php echo JRoute::_("index.php?option=com_ask&task=question.votepossitive&id=" . $answer->id)?>"><img src="components/com_ask/media/plus.png" /></a><br />
 				<span class="score"><?php echo $answer->score2; ?></span><br />

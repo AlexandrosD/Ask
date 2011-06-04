@@ -17,10 +17,7 @@ jimport('joomla.application.component.controller');
 class AskController extends JController
 {
 	public function display( $tpl = NULL )
-	{
-		//TODO: Specify a default view...later...
-		//JRequest::setVar('view','questions');
-		
+	{		
 		global $logger;
 		
 		//Call the display function

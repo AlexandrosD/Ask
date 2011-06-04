@@ -20,17 +20,37 @@ class AskControllerForm extends JControllerForm {
 		global $logger;
 		$logger->info("AskControllerForm::save()");
 		
+		//authorization
+		$user = JFactory::getUser();
+		if (!$user->authorize("core.create" , "com_ask")){
+			JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			return false;
+		}
+		
 		//Transparent Captcha
 		$captcha = JRequest::getString("LastName");
 		if ($captcha){
 			JError::raiseError(404 , ""); 
 		}
+			
+		//load request data
+		$data = JRequest::getVar('jform', array(), 'post', 'array');
+
+		//parse config options
+		$params = json_decode(JFactory::getApplication()->getParams());
 		
-		
-		$data = JRequest::getVar('jform', array(), 'post', 'array');	
+		//Determine default state 
+		// TODO: 	Check if the user is allowed to alter the state
+		//			- If so, then do not use the default state, but leave the state as is
+		if (TRUE){
+			$data['published'] = (int) $params->defaultQuestionState;
+		}
 		
 		//Encode the tags to json..
 		$tags = $data["tags"];
+		$tagsPlainText = $tags; 	// preserve original tag data as inserted by the user
+									// in order the form to contain the exact tag info, 
+									// i.e. data in plain text format and NOT json
 		if ($tags){
 			$tags = explode("," , $tags);
 			$tags = json_encode ( $tags );
@@ -54,6 +74,7 @@ class AskControllerForm extends JControllerForm {
 		}
 		else {
 			//store temp data
+			$data['tags'] = $tagsPlainText;
 			JFactory::getApplication()->setUserState("com_ask.edit.question.data", $data);
 		}
 	}

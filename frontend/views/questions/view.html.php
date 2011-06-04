@@ -20,14 +20,18 @@ class AskViewQuestions extends JView
         function display($tpl = null) 
         {
         	global $logger;
-            
+        	
+        	$app = JFactory::getApplication();
+        	$pathway = $app->getPathway();
+        	$user = JFactory::getUser();
+        	$this->document = JFactory::getDocument();
+        	
         	$this->questions = $this->get("Items");
         	$this->pagination = $this->get("Pagination");
         	
-        	$this->document = JFactory::getDocument();
-        	
         	$this->filteringOptions = $this->get("filteringOptions");
         	$this->sortingOptions = $this->get("sortingOptions");
+        	$this->activeFilter = JRequest::getString("filter");
         	
         	//Category View
         	$this->categoryView = FALSE; //Initialization
@@ -38,12 +42,10 @@ class AskViewQuestions extends JView
         	$this->tag = JRequest::getString("tag" , NULL);
         	
         	//Authorizations
-        	$user = JFactory::getUser();
         	$this->assignRef("viewanswers", $user->authorize("question.viewanswers" , "com_ask"));
         	$this->assignRef("submitanswers", $user->authorize("question.answer" , "com_ask"));
         	
         	//params
-        	$app = JFactory::getApplication();
         	$params = $app->getParams();
         	$this->assignRef("params", $params);
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
@@ -52,6 +54,9 @@ class AskViewQuestions extends JView
         	$this->viewStats = JRequest::getInt("display_stats");
         	$this->viewFilteringOptions = JRequest::getInt("display_filters");
         	$this->viewGravatars = JRequest::getInt("display_gravatars");
+        	
+        	//Add Pathway
+        	AskHelper::addPathway();    	
         	       
         	if ( @$this->questions ){ //check for questions, suppressing errors..
 	        	

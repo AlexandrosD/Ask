@@ -35,6 +35,7 @@
 			 		<option value="notanswered">FILTER_NOTANSWERED</option>
 			 		<option value="resolved">FILTER_RESOLVED</option>
 			 		<option value="unresolved">FILTER_UNRESOLVED</option>
+			 		<option value="myquestions">FILTER_MYQUESTIONS</option>
 				</field>
 				
 				<!-- ORDERING -->

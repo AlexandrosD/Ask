@@ -22,8 +22,16 @@ class AskControllerAnswer extends JController
 	}
 	
 	public function save(){
+		
 		//CSRF Anti-spoofing
 		JRequest::checkToken() or die( 'Invalid Token' );
+		
+		//authorization
+		$user = JFactory::getUser();
+		if (!$user->authorize("question.answer" , "com_ask")){
+			JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			return false;
+		}
 		
 		global $logger;
 		$logger->info("Saving Answer..");
@@ -35,13 +43,11 @@ class AskControllerAnswer extends JController
 		}
 		
 	 	$title = JRequest::getString("title");
-        //static method getString clean variable htmlspecialchars() not required (xss cleanup) see request.php line 248
         
         $text = JRequest::getString("text");
 
         $name = JRequest::getString("name");
         $parent = (int) JRequest::getInt("question_id");
-
 
         $submitted = date("Y-m-d H:i");
         $userid_creator = JFactory::getUser()->id;
@@ -50,10 +56,11 @@ class AskControllerAnswer extends JController
         $email = JRequest::getString("email");
         $catid = JRequest::getInt("catid");
 
-
-
-        //TODO: Determine State
-        $published = 1;
+        //parse config options
+		$params = json_decode(JFactory::getApplication()->getParams());
+		
+		//Default state
+        $published = (int) $params->defaultAnswerState;
 
         //VALIDATE DATA
         $valid = TRUE;
