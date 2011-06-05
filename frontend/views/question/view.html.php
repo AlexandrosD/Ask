@@ -45,9 +45,9 @@ class AskViewQuestion extends JView
         	$pathway=$app->getPathway();
         	$pathway->addItem ( $this->question->title );
         	
-        	if ( @$this->question ){ //check for questions, suppressing errors..
-	        	//$logger->info ( json_encode($this->question) );
-	        	parent::display($tpl);
+        	if ( @$this->question && $this->question->viewable ){ //check for questions, suppressing errors..
+	        		parent::display($tpl);
+
         	}
         	else{
         		$logger->error("No Results..");

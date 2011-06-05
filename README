@@ -18,13 +18,15 @@ Features:
 * Submission validation
 * RSS & Atom Feeds
 * Misc View options as menu item options
-* Default publishing state options & misc configurations
-* BREADCRUMBS
+* Configuration Options
+* Frontend Editing of already submitted questions (published or not)
+* Breadcrumbs
 * Filtering options (Frontend)
 	- Display not answered questions
 	- Display answered questions
 	- Resolved (with chosen answer)
 	- Unresolved (without chosen answer)
+	- Questions created by the currently logged in user
 * Sorting options (DESC / ASC) (Frontend)
 	- hits 
 	- number of answers
@@ -61,7 +63,6 @@ FEATURES v2.0.0:
 -------------------
 * ReCAPTCHA support
 * Notify selected users for new additions (per category)
-* Frontend Editing of already submitted questions (published or not)
 * Filtering & Sorting options for backend
 * Users to be able to see their submitted questions even if they are not published
 * Custom Code support (i.e for utilizing social plugins)

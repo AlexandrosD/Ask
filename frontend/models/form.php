@@ -60,6 +60,11 @@ class AskModelForm extends JModelAdmin
 				
 				$data->userid_modifier = $user->id;
 				$data->modified = date("Y-m-d H:i:s");
+				
+				//proccess json tags..
+				$tags = json_decode( $data->tags );
+				$data->tags = implode( ", " , $tags );
+				
 			}
 			
 			if ( $data->id==0 ) { 

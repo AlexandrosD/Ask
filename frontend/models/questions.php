@@ -23,10 +23,13 @@ class AskModelQuestions extends JModelList {
 		$logger->info("Will retrieve " . $this->getState("list.limit") . " records, starting from " . $this->getState("list.start") );
 
 		$rows	= parent::getItems();
-
+		
+		$questions = $rows;
+		
+		/*
 		$questions = array();
 		$answers = array();
-		
+
 		//If there are answers, associate them with their questions
 		if ( $this->getState("filter.answers" , 0) ) {
 			//seperate questions from answers
@@ -55,6 +58,7 @@ class AskModelQuestions extends JModelList {
 		else { //Only questions...
 			$questions = $rows;
 		}
+		*/
 		
 		foreach ($questions as $question){
 			$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id . AskHelper::getActiveViewOptions() ); 
@@ -81,7 +85,7 @@ class AskModelQuestions extends JModelList {
 
 		$items = $questions;
 		
-		$logger->info ("Total rows are " . parent::getTotal() . ". (Retrieved " . count($questions) . " Questions and " . count($answers) . " Answers)" );
+		$logger->info ( "Total rows are " . parent::getTotal() . ". (Retrieved " . count($questions) . " Questions" );
 		
 		return $items;
 	}
@@ -102,8 +106,9 @@ class AskModelQuestions extends JModelList {
 		$show_answers = $this->getState("filter.answers" , 0);
 		$show_unpublished = $this->getState("filter.unpublished" , 0);
 
+		/*
 		if ($show_answers && !$show_unpublished)
-			$where = "a.published=1";
+			$where = "a.published=1 AND a.question=1";
 			
 		if (!$show_answers && !$show_unpublished)
 			$where = "a.published=1 AND a.question=1";
@@ -113,28 +118,60 @@ class AskModelQuestions extends JModelList {
 			
 		if ($show_answers && $show_unpublished)
 			$where = NULL;
+		*/
+		
+		$where = array();
+		
+		/*
+		if (!$show_unpublished)
+			$where = "a.published=1 AND a.question=1";
+		else
+			$where = "a.question=1";
+		*/
+		
+		$where[] = "a.question=1"; // questions only
+		
+		if ( ! $show_unpublished )
+			$where[] = "a.published=1"; // only published items
 		
 		
 		//************* FILTERING - BEGIN ***************
 		
-		//categories - filter.catid
+		//get state
 		$catid = $this->getState("filter.catid" , 0);
+		$tag = $this->getState("filter.tag" , 0 );
+		$answered = $this->getState("filter.answered" , 0);
+		$notanswered = $this->getState("filter.notanswered" , 0);
+		$resolved = $this->getState("filter.resolved" , 0);
+		$unresolved = $this->getState("filter.unresolved" , 0);
+		$myquestions = $this->getState("filter.myquestions" , 0);
+		
+		/*
+		//categories - filter.catid
 		if ($catid){
 			if ($where)
 				$where .= " AND a.catid='$catid'";
 			else
 				$where = "a.catid='$catid'";
 		}
+		*/
 		
+		if ( $catid ) 
+			$where[] = "a.catid=$catid"; // category items
+		
+		/*
 		//tags - filter.tag
-		$tag = $this->getState("filter.tag" , 0 );
 		if ($tag)
 			if ($where)
 				$where .= " AND a.tags LIKE '%\"$tag\"%'";
 			else $where = "a.tags LIKE '$like'";
+		*/
 			
+		if ( $tag )
+			$where[] = "a.tag=$tag"; // tagged items
+		
+		/*
 		//answered questions - filter.answered
-		$answered = $this->getState("filter.answered" , 0);
 		if ($answered){
 			
 			//questions with no published answers considered as NOT ANSWERED
@@ -145,9 +182,13 @@ class AskModelQuestions extends JModelList {
 			else 
 				$where = $q;
 		}
+		*/
 		
+		if ( $answered )
+			$where[] = "a.id IN (SELECT parent FROM #__ask WHERE question=0 AND published=1)"; // answered items
+		
+		/*
 		//not answered questions - filter.notanswered
-		$notanswered = $this->getState("filter.notanswered" , 0);
 		if ($notanswered){
 			
 			//questions with no published answers considered as NOT ANSWERED
@@ -158,9 +199,13 @@ class AskModelQuestions extends JModelList {
 			else 
 				$where = $q;
 		}
+		*/
 		
+		if ( $notanswered )
+			$where[] = "a.id NOT IN (SELECT parent FROM #__ask WHERE question=0 AND published=1) AND a.question=1"; // not answered items. Note: Questions with no published answers are considered as Not Answered	
+
+		/*
 		//resolved question - filter.resolved
-		$resolved = $this->getState("filter.resolved" , 0);
 		if ($resolved){
 			
 			$q = "a.id in (SELECT parent from #__ask where question=0 and chosen=1)";
@@ -170,9 +215,13 @@ class AskModelQuestions extends JModelList {
 			else 
 				$where = $q;
 		}
+		*/
 		
+		if ( $resolved )
+			$where[] = "a.id in (SELECT parent from #__ask where question=0 and chosen=1)"; // resolved questions
+		
+		/*
 		//unresolved questions - filter.unresolved
-		$unresolved = $this->getState("filter.unresolved" , 0);
 		if ($unresolved){
 			
 			$q = "a.id in (select parent from #__ask where question=0 and chosen=0) and a.id not in (SELECT parent from #__ask where question=0 and chosen=1)";
@@ -182,9 +231,13 @@ class AskModelQuestions extends JModelList {
 			else 
 				$where = $q;
 		}
+		*/
 		
+		if ( $unresolved )
+			$where[] = "a.id in (select parent from #__ask where question=0 and chosen=0) and a.id not in (SELECT parent from #__ask where question=0 and chosen=1)"; // answered but not resolved questions
+		
+		/*
 		//my questions - filter.myquestions
-		$myquestions = $this->getState("filter.myquestions" , 0);
 		if ($myquestions){
 
 			$q = "a.userid_creator=$userid";
@@ -194,11 +247,16 @@ class AskModelQuestions extends JModelList {
 			else 
 				$where = $q;
 		}
-			
+		*/
+		
+		if ( $myquestions )
+			$where[] = "a.userid_creator=$userid"; // user's questions
+		
 		//************* FILTERING - END ***************
 		
 		//apply filters
-		if ($where) { $query->where( $where ); }
+		if ( ! empty( $where ) )
+			$query->where( $where );
 		
 		$ordering = $this->getState( "list.ordering" , "submitted" );
 		$direction = $this->getState( "list.direction" , "DESC" );
@@ -273,11 +331,11 @@ class AskModelQuestions extends JModelList {
 		//unresolved
 		$this->setState("filter.unresolved" , (int)($filter=="unresolved"));
 		
-		//user's questions
-		$this->setState("filter.myquestions" , (int)($filter=="myquestions"));
+		//user's questions -- ensure that the myquestions filter is only available to logged users
+		$this->setState("filter.myquestions" , (JFactory::getUser()->id ? (int)($filter=="myquestions") : 0) );
 		
 		//if the 'myquestions' filter is active, user is allowed to diplay his unpublished questions
-		if ($filter=="myquestions")
+		if ($filter=="myquestions" && JFactory::getUser()->id )
 			$view_unpublished=1;
 		
 		//************* FILTERING - END ***************
@@ -322,6 +380,8 @@ class AskModelQuestions extends JModelList {
         $unresolved = 
         	"<li><a " . (JRequest::getString("filter", 0)=="unresolved"?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&filter=unresolved" . $currentOptions)  . "'>" . JText::_("FILTER_UNRESOLVED") . "</a></li>";
         
+        $myquestions = NULL;
+        if ( JFactory::getUser()->id )
         $myquestions = 
         	"<li><a " . (JRequest::getString("filter", 0)=="myquestions"?'class=active':'') . " href='" . JRoute::_("index.php?option=com_ask&view=questions&filter=myquestions" . $currentOptions)  . "'>" . JText::_("FILTER_MYQUESTIONS") . "</a></li>";
                 

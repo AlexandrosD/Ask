@@ -65,10 +65,16 @@ class AskControllerForm extends JControllerForm {
 			JRequest::setVar("jform" , $data);
 		}		
 		
-		if (parent::save()){
-			$db = &JFactory::getDbo();
+		if (parent::save()) {
+			if ($data['id']) { //do we have an id?
+				$lastid = $data['id'];	//if so, use it
+			}
+			else { //if no, use the last inserted id
+				$db = &JFactory::getDbo();
+				$lastid = $db->insertid();
+			}
 			//redirect & display the inserted data
-			$this->setRedirect(JRoute::_("index.php?option=com_ask&view=question&id=") . $db->insertid());
+			$this->setRedirect(JRoute::_("index.php?option=com_ask&view=question&id=") . $lastid );
 			//clear state
 			JFactory::getApplication()->setUserState("com_ask.edit.question.data", array());
 		}

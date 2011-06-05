@@ -42,13 +42,15 @@ class AskModelQuestion extends JModelItem {
 		$query->from("#__ask AS a");
 		$query->leftJoin("#__categories AS c ON c.id=a.catid");
 		
-		$where = "";
-		if (!$this->getState("filter.unpublished")){
+		$where = "a.id=$id";
+		/*
+		if ($this->getState( "filter.unpublished" )){
 			$where = "a.id=$id";
 		}
 		else {
 			$where = "a.id=$id AND a.published=1";
 		}
+		*/
 		$query->where($where);
 		
 		$logger->info("SQL Query: " . $query );
@@ -90,6 +92,12 @@ class AskModelQuestion extends JModelItem {
         
         //tags
         $question->tags = json_decode($question->tags);
+        
+        //editable?
+        $question->editable = $this->isEditable( $question );
+        
+        //viewable?
+        $question->viewable = $this->isViewable( $question );
 		
 		$this->item = $question;
 		
@@ -166,9 +174,9 @@ class AskModelQuestion extends JModelItem {
 		
 		$user = JFactory::getUser();
 		
-		$this->setState( "filter.unpublished" , $user->authorize("question.unpublished" , "com_ask") );
-		$this->setState( "filter.answers" , $user->authorize("question.answers" , "com_ask") );
-		
+		$this->setState( "filter.unpublished" , $user->authorise("question.unpublished" , "com_ask") );
+		$this->setState( "filter.answers" , $user->authorise("question.answers" , "com_ask") );
+
 		$logger->info("AskModelQuestion::populateState() completed!");
 		
 	}	
@@ -246,7 +254,7 @@ class AskModelQuestion extends JModelItem {
 	}			
 	
 	public function vote( $id = null , $negative = FALSE ){
-		global $logger;
+	global $logger;
 		if ($id){
 			$this->id = $id;
 		}
@@ -276,6 +284,49 @@ class AskModelQuestion extends JModelItem {
 			$logger->warning("Cannot vote for an empty question!");
 			return FALSE;
 		}
+	}
+	
+	protected function isEditable( $question ) {
+		global $logger;
+		$logger->info("AskModelQuestion::isEditable");
+			
+		$user = JFactory::getUser();
+		
+		$isOwner = ( $question->userid_creator === $user->id );
+		$logger->info("isOwner: " . $isOwner );
+		
+		if ( 	( 	$isOwner 
+					&& $user->authorise ( "core.edit" , "com_ask" )
+				) 
+				|| $user->authorise ( "core.edit_any" , "com_ask" ) )
+			return true;
+		
+		/* else */
+		return false;		
+	}
+	
+	protected function isViewable ( $question ) {
+		global $logger;
+		$logger->info("AskModelQuestion::isViewable()");
+		
+		$user = JFactory::getUser();
+		
+		$isOwner = ( $question->userid_creator === $user->id );
+
+		$logger->info(
+			"isOwner: " . $isOwner . 
+			"\nPublished Question: " . $question->published .
+			"\nAuthorised User: " .  $user->authorise ( "question.unpublished" , "com_ask" )
+		);
+		
+		if ( $question->published )
+			return TRUE;
+			
+		if ( $isOwner || $user->authorise ( "question.unpublished" , "com_ask" ) )
+			return TRUE;
+		
+		/* else */
+		return false;
 	}
 	
 }

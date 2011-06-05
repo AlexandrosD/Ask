@@ -80,4 +80,23 @@ class AskControllerQuestion extends JController {
 		
 	}
 	
+	public function edit() {
+		global $logger;
+		
+		$message =  NULL;
+		$id = JRequest::getInt("id");
+		
+		$logger->info( "AskControllerQuestion::edit($id)" );
+		
+		//check whether the user is allowed to edit this question
+		if (TRUE) {
+			JFactory::getApplication()->setUserState("com_ask.edit.form.id" , $id );
+			$url = "index.php?option=com_ask&view=form&layout=edit&id=$id";
+		}
+		else { //Not allowed
+			//redirect
+		}
+		$this->setRedirect( JRoute::_( $url ) , $message );
+	}
+	
 }

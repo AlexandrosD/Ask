@@ -6,10 +6,9 @@
 		<action name="question.edit" title="QUESTION_EDIT" description="" />
 		<action name="core.create" title="CORE_CREATE" description="" />
 		<action name="core.edit" title="CORE_EDIT" description="" />
+		<action name="core.edit_any" title="QUESTION_EDIT_ANY" description="" />
 		<action name="question.delete" title="QUESTION_DELETE" description="" />
 		<action name="question.publish" title="QUESTION_PUBLISH" description="" />
-		<!--<action name="question.own_edit" title="QUESTION_OWN_EDIT" description="" />-->
-		<!--<action name="question.own_delete" title="QUESTION_OWN_DELETE" desctiption="" />-->		
 		<action name="question.viewanswers" title="QUESTION_VIEWANSWERS" description="" />
 		<action name="question.vote" title="QUESTION_VOTE" description="" />
 		<action name="core.admin" title="CORE_ADMIN" description="" /> 

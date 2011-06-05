@@ -22,15 +22,15 @@ require_once ("custom_logger.php");
 global $logger;
 $logger = new CustomLogger();
 
-//Set the loglevel
-$logger->setLoglevel(CustomLogger::LOG_INFO);
-
 //Add stylesheet ?
 $params = json_decode(JFactory::getApplication()->getParams());
 if( $params->useDefaultCss ){
 	$doc = JFactory::getDocument();
 	$doc->addStyleSheet("components/com_ask/media/stylesheet.css");
 }
+
+//Set the loglevel
+$logger->setLoglevel( ( $params->loglevel ? $params->loglevel : '0') );
 
 // Get an instance of the controller prefixed by HelloWorld
 $controller = JController::getInstance('ask');

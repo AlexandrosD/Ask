@@ -52,6 +52,20 @@
 			<option value="0">OPT_NO</option>
 		</field>
 		
+		<!-- USE OF COMPONENT'S DEFAULT CSS -->
+		<field
+			name="loglevel"
+			label="CONFIG_LOGLEVEL"
+			type="list"
+			class="inputbox"
+		>
+			<option value="0">LOG_NOLOG</option>
+			<option value="1">LOG_SEVERE</option>
+			<option value="5">LOG_ERROR</option>
+			<option value="7">LOG_WARNING</option>
+			<option value="9">LOG_INFO</option>			
+		</field>
+		
 	</fieldset>
 
 </config>
