@@ -26,40 +26,6 @@ class AskModelQuestions extends JModelList {
 		
 		$questions = $rows;
 		
-		/*
-		$questions = array();
-		$answers = array();
-
-		//If there are answers, associate them with their questions
-		if ( $this->getState("filter.answers" , 0) ) {
-			//seperate questions from answers
-			//quit if no rows exist..
-			foreach ($rows as $row){
-				if ($row->question){
-					$questions[] = $row;
-				}
-				else {
-					$answers[] = $row;
-				}
-			}
-			
-			//add each answer to its relevant question
-			foreach ($questions as $question){
-				$question->answers = array();
-				foreach ($answers as $answer){
-					if ($answer->parent == $question->id ){
-						$question->answers[] = $answer;
-					}
-				}
-			}
-			
-			$items = $questions;
-		}
-		else { //Only questions...
-			$questions = $rows;
-		}
-		*/
-		
 		foreach ($questions as $question){
 			$question->link = JRoute::_( "index.php?option=com_ask&view=question&id=" . $question->id . AskHelper::getActiveViewOptions() ); 
 			
@@ -105,29 +71,8 @@ class AskModelQuestions extends JModelList {
 
 		$show_answers = $this->getState("filter.answers" , 0);
 		$show_unpublished = $this->getState("filter.unpublished" , 0);
-
-		/*
-		if ($show_answers && !$show_unpublished)
-			$where = "a.published=1 AND a.question=1";
-			
-		if (!$show_answers && !$show_unpublished)
-			$where = "a.published=1 AND a.question=1";
-		
-		if (!$show_answers && $show_unpublished)
-			$where = "a.question=1";
-			
-		if ($show_answers && $show_unpublished)
-			$where = NULL;
-		*/
 		
 		$where = array();
-		
-		/*
-		if (!$show_unpublished)
-			$where = "a.published=1 AND a.question=1";
-		else
-			$where = "a.question=1";
-		*/
 		
 		$where[] = "a.question=1"; // questions only
 		
@@ -146,108 +91,29 @@ class AskModelQuestions extends JModelList {
 		$unresolved = $this->getState("filter.unresolved" , 0);
 		$myquestions = $this->getState("filter.myquestions" , 0);
 		
-		/*
-		//categories - filter.catid
-		if ($catid){
-			if ($where)
-				$where .= " AND a.catid='$catid'";
-			else
-				$where = "a.catid='$catid'";
-		}
-		*/
 		
 		if ( $catid ) 
 			$where[] = "a.catid=$catid"; // category items
 		
-		/*
-		//tags - filter.tag
-		if ($tag)
-			if ($where)
-				$where .= " AND a.tags LIKE '%\"$tag\"%'";
-			else $where = "a.tags LIKE '$like'";
-		*/
 			
 		if ( $tag )
 			$where[] = "a.tag=$tag"; // tagged items
 		
-		/*
-		//answered questions - filter.answered
-		if ($answered){
-			
-			//questions with no published answers considered as NOT ANSWERED
-			$q = "a.id IN (SELECT parent FROM #__ask WHERE question=0 AND published=1)";
-			
-			if ($where)
-				$where .= " AND " . $q;
-			else 
-				$where = $q;
-		}
-		*/
 		
 		if ( $answered )
 			$where[] = "a.id IN (SELECT parent FROM #__ask WHERE question=0 AND published=1)"; // answered items
 		
-		/*
-		//not answered questions - filter.notanswered
-		if ($notanswered){
-			
-			//questions with no published answers considered as NOT ANSWERED
-			$q = "a.id NOT IN (SELECT parent FROM #__ask WHERE question=0 AND published=1) AND a.question=1";
-			
-			if ($where)
-				$where .= " AND " . $q;
-			else 
-				$where = $q;
-		}
-		*/
 		
 		if ( $notanswered )
 			$where[] = "a.id NOT IN (SELECT parent FROM #__ask WHERE question=0 AND published=1) AND a.question=1"; // not answered items. Note: Questions with no published answers are considered as Not Answered	
 
-		/*
-		//resolved question - filter.resolved
-		if ($resolved){
-			
-			$q = "a.id in (SELECT parent from #__ask where question=0 and chosen=1)";
-			
-			if ($where)
-				$where .= " AND " . $q;
-			else 
-				$where = $q;
-		}
-		*/
 		
 		if ( $resolved )
 			$where[] = "a.id in (SELECT parent from #__ask where question=0 and chosen=1)"; // resolved questions
 		
-		/*
-		//unresolved questions - filter.unresolved
-		if ($unresolved){
-			
-			$q = "a.id in (select parent from #__ask where question=0 and chosen=0) and a.id not in (SELECT parent from #__ask where question=0 and chosen=1)";
-			
-			if ($where)
-				$where .= " AND " . $q;
-			else 
-				$where = $q;
-		}
-		*/
 		
 		if ( $unresolved )
 			$where[] = "a.id in (select parent from #__ask where question=0 and chosen=0) and a.id not in (SELECT parent from #__ask where question=0 and chosen=1)"; // answered but not resolved questions
-		
-		/*
-		//my questions - filter.myquestions
-		if ($myquestions){
-
-			$q = "a.userid_creator=$userid";
-			
-			if ($where)
-				$where .= " AND " . $q;
-			else 
-				$where = $q;
-		}
-		*/
 		
 		if ( $myquestions )
 			$where[] = "a.userid_creator=$userid"; // user's questions
