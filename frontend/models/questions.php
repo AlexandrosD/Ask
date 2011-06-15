@@ -92,12 +92,16 @@ class AskModelQuestions extends JModelList {
 		$myquestions = $this->getState("filter.myquestions" , 0);
 		
 		
-		if ( $catid ) 
-			$where[] = "a.catid=$catid"; // category items
+		if ( $catid ) {
+			$catid = mysql_real_escape_string($catid);
+			$where[] = "a.catid='$catid'"; // category items
+		}
 		
 			
-		if ( $tag )
-			$where[] = "a.tag=$tag"; // tagged items
+		if ( $tag ) {
+			$tag = mysql_real_escape_string($tag);
+			$where[] = "a.tags LIKE '%". $tag . "%' "; // tagged items
+		}
 		
 		
 		if ( $answered )

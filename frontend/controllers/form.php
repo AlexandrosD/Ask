@@ -74,7 +74,7 @@ class AskControllerForm extends JControllerForm {
 				$lastid = $db->insertid();
 			}
 			//redirect & display the inserted data
-			$this->setRedirect(JRoute::_("index.php?option=com_ask&view=question&id=") . $lastid );
+			$this->setRedirect(JRoute::_("index.php?option=com_ask&view=questions"));
 			//clear state
 			JFactory::getApplication()->setUserState("com_ask.edit.question.data", array());
 		}

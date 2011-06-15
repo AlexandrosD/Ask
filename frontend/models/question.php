@@ -43,14 +43,6 @@ class AskModelQuestion extends JModelItem {
 		$query->leftJoin("#__categories AS c ON c.id=a.catid");
 		
 		$where = "a.id=$id";
-		/*
-		if ($this->getState( "filter.unpublished" )){
-			$where = "a.id=$id";
-		}
-		else {
-			$where = "a.id=$id AND a.published=1";
-		}
-		*/
 		$query->where($where);
 		
 		$logger->info("SQL Query: " . $query );
@@ -124,6 +116,8 @@ class AskModelQuestion extends JModelItem {
 		$query->from("#__ask");
 		
 		//Users can view their asnwers even if they're not published
+		if ($userid == 0 ) //unregistered user..
+			$userid = -1; //prevent unregistered users from handled as questions owners
 		$where = "parent=" . $this->id . " AND (published=1 OR userid_creator=$userid)";
 		
 		$query->where($where);		

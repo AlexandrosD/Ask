@@ -108,6 +108,9 @@ abstract class AskHelper {
 	}
 	
 	public static function getCategoryName ( $catid ){
+		if ($catid==0)
+			return;
+		
 		$db = JFactory::getDbo();
 		
 		$query = $db->getQuery(TRUE);
@@ -119,6 +122,36 @@ abstract class AskHelper {
 		$catname = $db->loadObject();
 		
 		return $catname->title;
+		
+		/*
+		$category = JCategories::getInstance('Ask')->get($catid);
+		
+		return $category->title;
+		*/
 	}
 	
+	/**
+	 * 
+	 * Method to return the title of an entry / row (question or answer)
+	 * 
+	 * @param $id int The row ID
+	 * 
+	 */
+	public static function getTitle ( $id ) {
+		 if ($id == 0)
+		 	return; 
+		 
+		$db = JFactory::getDbo();
+		
+		$query = $db->getQuery(TRUE);
+		$query->select("title");
+		$query->from("#__ask");
+		$query->where("id=$id");
+		
+		$db->setQuery($query);
+		$row = $db->loadObject();
+		
+		return $row->title;	
+		 	
+	}
 }
