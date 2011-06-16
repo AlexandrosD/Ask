@@ -49,11 +49,11 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 		</div>
 		
 		<div class="formelm-buttons">
-			<button type="button" onclick="Joomla.submitbutton('answer.save')">
-				<?php echo JText::_('SUBMIT_ANSWER') ?>
-			</button>
+			<input type="button" onclick="Joomla.submitbutton('answer.save')" value="<?php echo JText::_('SUBMIT_ANSWER') ?>" />
 		</div>
 		
+		<!-- <input type="hidden" name="task" value="" /> -->
+		<!-- <input type="hidden" name="task" value="answer.save" /> -->
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="question_id" value="<?php echo $this->question->id; ?>" />
 		<input id="ip" type="hidden" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>" name="ip" />
