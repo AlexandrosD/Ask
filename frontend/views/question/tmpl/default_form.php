@@ -49,13 +49,9 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 		</div>
 		
 		<div class="formelm-buttons">
-			<!-- <input type="button" onclick="Joomla.submitbutton('answer.save')" value="<?php echo JText::_('SUBMIT_ANSWER') ?>" /> -->
 			<input type="submit" value="<?php echo JText::_('SUBMIT_ANSWER') ?>" />
 		</div>
 		
-		
-		<!-- <input type="hidden" name="task" value="" /> -->
-		<!-- <input type="hidden" name="task" value="answer.save" /> -->
 		<input type="hidden" name="task" value="answer.save" />
 		
 		<input type="hidden" name="question_id" value="<?php echo $this->question->id; ?>" />
