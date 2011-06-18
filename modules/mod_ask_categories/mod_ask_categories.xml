@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="1.6.0"
+	client="site"
+	method="upgrade">
+	<name>Ask - Categories</name>
+	<author>author</author>
+	<creationDate>2011/06/18</creationDate>
+	<copyright>copyright</copyright>
+	<license>licence</license>
+	<authorEmail>email</authorEmail>
+	<authorUrl>url</authorUrl>
+	<version>1.6.0</version>
+	<description>Ask - Categories</description>
+	<files>
+		<filename module="mod_ask_categories">mod_ask_categories.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_ask_categories.xml</filename>
+	</files>
+</extension>

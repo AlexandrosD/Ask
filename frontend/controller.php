@@ -20,7 +20,7 @@ class AskController extends JController
 	{		
 		global $logger;
 		
-		//JRequest::setVar("view" , "questions");
+		JRequest::setVar("view" , JRequest::getVar("view" , "questions") );
 		
 		//Call the display function
 		$logger->info("Controller - Calling parent::display..");		
