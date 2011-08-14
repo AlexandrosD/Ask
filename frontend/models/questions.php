@@ -213,9 +213,9 @@ class AskModelQuestions extends JModelList {
 		
 		
 		//************* ORDERING - START ***************
-		
-		$ordering = JRequest::getString("list_ordering" , "submitted");
-		$direction = JRequest::getString("list_direction" , "DESC");
+		$appParams = json_decode(JFactory::getApplication()->getParams());
+		$ordering = $appParams->list_ordering;
+		$direction = $appParams->list_direction;
 		
 		$this->setState("list.ordering" , $ordering);
 		$this->setState("list.direction" , $direction);

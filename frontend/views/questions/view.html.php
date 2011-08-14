@@ -51,9 +51,11 @@ class AskViewQuestions extends JView
         	$this->assignRef("pageclass_sfx" , htmlspecialchars($params->get('pageclass_sfx')));
         	
         	//view options
-        	$this->viewStats = JRequest::getInt("display_stats");
-        	$this->viewFilteringOptions = JRequest::getInt("display_filters");
-        	$this->viewGravatars = JRequest::getInt("display_gravatars");
+        	$appParams = json_decode(JFactory::getApplication()->getParams());
+        	$this->viewStats = $appParams->display_stats;
+        	$this->viewFilteringOptions = $appParams->display_filters;
+        	$this->viewGravatars = $appParams->display_gravatars;
+        	
         	
         	//Add Pathway
         	AskHelper::addPathway();    	

@@ -33,26 +33,30 @@ Features:
 	- score
 	- number of votes
 	- Submission Date
-	
+
+********************************************************************************
 Things to come:
+********************************************************************************
+-------------------
+pending FEATURES v0.9.0 (last public beta):
+-------------------
+
+PLUGINS:
+* Integrate with Joomla's search functionality
 
 ********************************************************************************
 -------------------
-PENDING FEATURES v1.0.0:
+FEATURES v1.0.0:
 -------------------
 
 TODO / TASKS:
 * ROUTING
-* AUTO UPDATE FUNCTIONALITY
-* Cleanup Obsolete Code
-
-IMPLEMENT MODULES:
-* Questions (filtering functionality as for component)
-* Answers (filtering functionality as for questions)
-* Categories
 
 MODULES:
 * Tags
+* Categories
+* Questions (filtering functionality as for component)
+* Answers (filtering functionality as for questions)
 
 PLUGINS:
 * Integrate with Joomla's search functionality
@@ -71,11 +75,14 @@ FEATURES v2.0.0:
 
 MODULES:
 * Tag Cloud
+* Top Questions
 
 TODO / TASKS:
 * RW the component... Answers and Questions shall be separate model classes
 * Improve Backend submenu detection code
 * Code Optimization
+* AUTO UPDATE FUNCTIONALITY
+* Cleanup Obsolete Code
 ********************************************************************************
 
 

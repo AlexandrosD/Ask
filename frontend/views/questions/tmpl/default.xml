@@ -38,59 +38,6 @@
 			 		<option value="myquestions">FILTER_MYQUESTIONS</option>
 				</field>
 				
-				<!-- ORDERING -->
-				<field name="list_ordering" 
-					type="list"
-					label="ORDER_BY"
-					class="inputbox"
-				>
-			 		<option value="submitted">ORDER_SUBMITTED</option>
-			 		<option value="votes">ORDER_VOTES</option>
-			 		<option value="score">ORDER_SCORE</option>
-			 		<option value="impressions">ORDER_VIEWS</option>
-			 		<option value="answerscount">ORDER_ANSWERS</option>
-				</field>
-				
-				<!-- ORDERING DIRECTION -->
-				<field name="list_direction" 
-					type="list"
-					label="ORDER_DIRECTION"
-					class="inputbox"
-				>
-			 		<option value="DESC">ORDER_DESC</option>
-			 		<option value="ASC">ORDER_ASC</option>
-				</field>
-				
-				<!-- DISPLAY STATS -->
-				<field name="display_stats"
-					type="list"
-					label="DISPLAY_STATS"
-					class="inputbox"
-				>
-					<option value="1">OPT_YES</option>
-					<option value="0">OPT_NO</option>
-				</field>
-				
-				<!-- DISPLAY FILTERS -->
-				<field name="display_filters"
-					type="list"
-					label="DISPLAY_FILTERS"
-					class="inputbox"
-				>
-					<option value="1">OPT_YES</option>
-					<option value="0">OPT_NO</option>
-				</field>
-				
-				<!-- DISPLAY GRAVATARS -->
-				<field name="display_gravatars"
-					type="list"
-					label="DISPLAY_GRAVATARS"
-					class="inputbox"
-				>
-					<option value="1">OPT_YES</option>
-					<option value="0">OPT_NO</option>
-				</field>
-				
 			</fieldset>
 		</fields>
 </metadata>

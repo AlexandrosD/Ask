@@ -2,14 +2,14 @@
 <extension type="component" version="1.6.0" method="upgrade">
  
         <name>com_ask</name>
-        <creationDate>March 2011</creationDate>
+        <creationDate>August 2011</creationDate>
         <author>Alexandros D</author>
         <authorEmail>alexd3499@gmail.com</authorEmail>
         <authorUrl>http://alexd.mplofa.com</authorUrl>
         <copyright>Copyright (c) 2011 - Alexandros D</copyright>
         <license>GNU - GPL</license>
         <!--  The version string is recorded in the components table -->
-        <version>0.6.5</version>
+        <version>0.9.0</version>
         <!-- The description is optional and defaults to the name -->
         <description>A native Joomla 1.6 Component to integrate functionality *SIMILAR* to Y!Answers or Quora</description>
  
