@@ -17,9 +17,20 @@
         <scriptfile>script.php</scriptfile>
  
         <install> <!-- Runs on install -->
-                <sql>
-                        <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
-                </sql>
+           	<sql>
+            	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+            </sql>
+        	<params>
+        		<param name="list_ordering" default="submitted" />
+        		<param name="list_direction" default="DESC" />
+        		<param name="display_stats" default="1" />
+        		<param name="display_filters" default="1" />
+        		<param name="display_gravatars" default="1" />
+        		<param name="defaultQuestionState" default="1" />
+        		<param name="defaultAnswerState" default="1" />
+        		<param name="useDefaultCss" default="1" />
+        		<param name="loglevel" default="0" />
+        	</params>
         </install>
         <uninstall> <!-- Runs on uninstall -->
                 <sql>

@@ -52,7 +52,8 @@ class AskModelForm extends JModelAdmin
 			if (! $data instanceof JObject)
 				$data = JArrayHelper::toObject($data);
 			
-			if ( $data->userid_creator ){
+			//Fix issue #10 - https://github.com/alexd3499/Ask/issues/10
+			if ( $data->title ){
 				//Existing Item..
 				//Fill in the apropriate information concerning the modifications
 				$logger->info("Existing Item");
@@ -63,7 +64,11 @@ class AskModelForm extends JModelAdmin
 				
 				//proccess json tags..
 				$tags = json_decode( $data->tags );
-				$data->tags = implode( ", " , $tags );
+				//Fix issue #13 - https://github.com/alexd3499/Ask/issues/13
+				$data->tags = NULL;
+				if ($tags) {
+					$data->tags = implode( ", " , $tags );
+				}
 				
 			}
 			

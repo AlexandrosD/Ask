@@ -52,7 +52,8 @@ class AskModelQuestion extends JModelAdmin {
 			if (! $data instanceof JObject)
 				$data = JArrayHelper::toObject($data);
 			
-			if ( $data->userid_creator ){
+			//Fix issue #10 - https://github.com/alexd3499/Ask/issues/10
+			if ( $data->title ){
 				//Existing Item..
 				//Fill in the apropriate information concerning the modifications
 				$logger->info("Existing Item");
