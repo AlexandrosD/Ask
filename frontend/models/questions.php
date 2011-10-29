@@ -93,13 +93,11 @@ class AskModelQuestions extends JModelList {
 		
 		
 		if ( $catid ) {
-			$catid = mysql_real_escape_string($catid);
 			$where[] = "a.catid='$catid'"; // category items
 		}
 		
 			
 		if ( $tag ) {
-			$tag = mysql_real_escape_string($tag);
 			$where[] = "a.tags LIKE '%". $tag . "%' "; // tagged items
 		}
 		

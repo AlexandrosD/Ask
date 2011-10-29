@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
  
 // import Joomla table library
 jimport('joomla.database.table');
- 
+
 /**
  * Hello Table class
  */

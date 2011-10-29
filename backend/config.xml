@@ -25,6 +25,7 @@
 			type="list"
 			label="ORDER_BY"
 			class="inputbox"
+			default="submitted"
 		>
 			<option value="submitted">ORDER_SUBMITTED</option>
 			<option value="votes">ORDER_VOTES</option>
@@ -38,6 +39,7 @@
 			type="list"
 			label="ORDER_DIRECTION"
 			class="inputbox"
+			default="DESC"
 		>
 			<option value="DESC">ORDER_DESC</option>
 			<option value="ASC">ORDER_ASC</option>
@@ -48,6 +50,7 @@
 			type="list"
 			label="DISPLAY_STATS"
 			class="inputbox"
+			default="1"
 		>
 			<option value="1">OPT_YES</option>
 			<option value="0">OPT_NO</option>
@@ -58,6 +61,7 @@
 			type="list"
 			label="DISPLAY_FILTERS"
 			class="inputbox"
+			default="1"
 		>
 			<option value="1">OPT_YES</option>
 			<option value="0">OPT_NO</option>
@@ -68,6 +72,7 @@
 			type="list"
 			label="DISPLAY_GRAVATARS"
 			class="inputbox"
+			default="1"
 		>
 			<option value="1">OPT_YES</option>
 			<option value="0">OPT_NO</option>
@@ -79,6 +84,7 @@
 			label="CONFIG_DEFAULTQUESTIONSTATE"
 			type="list"
 			class="inputbox"
+			default="1"
 		>
 			<option value="1">OPT_PUBLISHED</option>
 			<option value="0">OPT_UNPUBLISHED</option>
@@ -90,6 +96,7 @@
 			label="CONFIG_DEFAULTANSWERSTATE"
 			type="list"
 			class="inputbox"
+			default="1"
 		>
 			<option value="1">OPT_PUBLISHED</option>
 			<option value="0">OPT_UNPUBLISHED</option>
@@ -101,6 +108,7 @@
 			label="CONFIG_USEDEFAULTCSS"
 			type="list"
 			class="inputbox"
+			default="1"
 		>
 			<option value="1">OPT_YES</option>
 			<option value="0">OPT_NO</option>
@@ -112,6 +120,7 @@
 			label="CONFIG_LOGLEVEL"
 			type="list"
 			class="inputbox"
+			default="1"
 		>
 			<option value="0">LOG_NOLOG</option>
 			<option value="1">LOG_SEVERE</option>

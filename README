@@ -1,6 +1,8 @@
 COM_ASK
 A Native Joomla 1.6 component in order to integrate functionality *SIMILAR* to Y!Answers or Quora into a website
 
+Note that first priority after installing is to configure ACL according to your needs. By default, unregistered users are neither allowed to display aswers to questions, nor to submit them. Also, PHP errors may appear because of the configuration's absence.
+
 Features: 
 * ACL Based Rights
 * Submit Questions from both frontend and backend
@@ -36,14 +38,6 @@ Features:
 
 ********************************************************************************
 Things to come:
-********************************************************************************
--------------------
-pending FEATURES v0.9.0 (last public beta):
--------------------
-
-PLUGINS:
-* Integrate with Joomla's search functionality
-
 ********************************************************************************
 -------------------
 FEATURES v1.0.0:

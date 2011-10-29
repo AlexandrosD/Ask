@@ -99,6 +99,18 @@ require_once ("administrator/components/com_ask/helpers/ask.php");
 		<?php endforeach;?>
 	<?php endif;?>
 	
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-1263645366946418";
+	/* attica24 - article */
+	google_ad_slot = "2589376447";
+	google_ad_width = 468;
+	google_ad_height = 60;
+	//-->
+	</script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+	
 	<?php if ($this->submitanswers):?>
 		<!-- ANSWER FORM -->
 		<a name="newanswer">&nbsp;</a>
